@@ -11,7 +11,7 @@ import java.util.Map;
  * @since 1.0
  */
 public class TranslateHolder {
-    private static final String DEFAULT = "default";
+    public static final String DEFAULT = "default";
 
     private static Map<String, Translator> translators = new HashMap<>();
 
@@ -25,7 +25,7 @@ public class TranslateHolder {
      * @param name       翻译器名称
      * @param translator 翻译器
      */
-    public void register(String name, Translator translator) {
+    public static void register(String name, Translator translator) {
         translators.put(name, translator);
     }
 
