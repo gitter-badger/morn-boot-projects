@@ -3,7 +3,7 @@ package site.timely.exception;
 import lombok.Setter;
 
 /**
- * site.timely.exception
+ * 注解异常解释器
  *
  * @author timely-rain
  * @version 1.0.0, 2018/8/23
@@ -19,7 +19,7 @@ public class SimpleAnnotationExceptionResolver implements AnnotationExceptionRes
     /**
      * 类型
      */
-    private Class<?>[] classes;
+    private Class<?>[] targets;
 
     /**
      * 异常解释器
@@ -33,7 +33,7 @@ public class SimpleAnnotationExceptionResolver implements AnnotationExceptionRes
 
     @Override
     public Class<?>[] getTargets() {
-        return classes;
+        return targets;
     }
 
     @Override

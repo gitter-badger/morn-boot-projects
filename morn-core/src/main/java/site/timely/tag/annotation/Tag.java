@@ -13,7 +13,7 @@ public @interface Tag {
      *
      * @return 名称标记
      */
-    String[] names() default {};
+    String[] tags() default {};
 
     /**
      * 获取类型标记
