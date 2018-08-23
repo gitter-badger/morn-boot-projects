@@ -19,8 +19,8 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>site.morn</groupId>
-            <artifactId>morn-core</artifactId>
+            <groupId>site.morn.boot</groupId>
+            <artifactId>morn-boot-core</artifactId>
             <version>${morn.version}</version>
         </dependency>
     </dependencies>
