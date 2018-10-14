@@ -11,4 +11,5 @@ import site.timely.rest.RestMessage;
  * @since 1.0
  */
 public interface RestConverter<T> extends BeanConverter<RestMessage, T> {
+
 }

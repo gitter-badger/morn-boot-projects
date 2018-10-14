@@ -11,33 +11,34 @@ import lombok.Setter;
  */
 @Setter
 public class SimpleAnnotationExceptionResolver implements AnnotationExceptionResolver {
-    /**
-     * 标签
-     */
-    private String[] tags;
 
-    /**
-     * 类型
-     */
-    private Class<?>[] targets;
+  /**
+   * 标签
+   */
+  private String[] tags;
 
-    /**
-     * 异常解释器
-     */
-    private ExceptionResolver resolver;
+  /**
+   * 类型
+   */
+  private Class<?>[] targets;
 
-    @Override
-    public String[] getTags() {
-        return tags;
-    }
+  /**
+   * 异常解释器
+   */
+  private ExceptionResolver resolver;
 
-    @Override
-    public Class<?>[] getTargets() {
-        return targets;
-    }
+  @Override
+  public String[] getTags() {
+    return tags;
+  }
 
-    @Override
-    public Object resolve(Throwable throwable) {
-        return resolver.resolve(throwable);
-    }
+  @Override
+  public Class<?>[] getTargets() {
+    return targets;
+  }
+
+  @Override
+  public Object resolve(Throwable throwable) {
+    return resolver.resolve(throwable);
+  }
 }

@@ -10,15 +10,16 @@ import java.util.Locale;
  * @since 1.0
  */
 public class DefaultTranslator implements Translator {
-    static final DefaultTranslator DEFAULT = new DefaultTranslator();
 
-    @Override
-    public String translate(String code, Object... args) {
-        return code;
-    }
+  static final DefaultTranslator DEFAULT = new DefaultTranslator();
 
-    @Override
-    public String translate(Locale locale, String code, Object... args) {
-        return code;
-    }
+  @Override
+  public String translate(String code, Object... args) {
+    return code;
+  }
+
+  @Override
+  public String translate(Locale locale, String code, Object... args) {
+    return code;
+  }
 }

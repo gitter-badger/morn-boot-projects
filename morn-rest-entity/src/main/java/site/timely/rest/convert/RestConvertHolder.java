@@ -11,10 +11,11 @@ import java.util.Map;
  * @since 1.0
  */
 public class RestConvertHolder {
-    private static Map<String, RestConverter> converters = new HashMap<>();
 
-    @SuppressWarnings("unchecked")
-    public static <T> RestConverter<T> getConverter(String name) {
-        return converters.get(name);
-    }
+  private static Map<String, RestConverter> converters = new HashMap<>();
+
+  @SuppressWarnings("unchecked")
+  public static <T> RestConverter<T> getConverter(String name) {
+    return converters.get(name);
+  }
 }

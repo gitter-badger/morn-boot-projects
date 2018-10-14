@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>9</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>site.morn</groupId>
-    <artifactId>morn-projects</artifactId>
-    <version>1.0.0.SNAPSHOT</version>
-    <packaging>pom</packaging>
+  <groupId>site.morn</groupId>
+  <artifactId>morn-projects</artifactId>
+  <version>1.0.0.SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-    <description>Morn Projects - 基于Java的系列开发工具包</description>
+  <description>Morn Projects - 基于Java的系列开发工具包</description>
 
-    <modules>
-        <module>morn-core</module>
-        <module>morn-exception</module>
-        <module>morn-rest-entity</module>
-        <module>morn-validator</module>
-    </modules>
+  <modules>
+    <module>morn-core</module>
+    <module>morn-exception</module>
+    <module>morn-rest-entity</module>
+    <module>morn-validator</module>
+  </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
 
+    <morn.version>1.0.0.SNAPSHOT</morn.version>
+    <lombok.version>1.16.22</lombok.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <profiles>
+    <profile>
+      <id>sonatype-nexus-snapshots</id>
+      <properties>
         <morn.version>1.0.0.SNAPSHOT</morn.version>
-        <lombok.version>1.16.22</lombok.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <profiles>
-        <profile>
-            <id>sonatype-nexus-snapshots</id>
-            <properties>
-                <morn.version>1.0.0.SNAPSHOT</morn.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>sonatype-nexus-staging</id>
-            <properties>
-                <morn.version>1.0.0.RELEASE</morn.version>
-            </properties>
-        </profile>
-    </profiles>
+      </properties>
+    </profile>
+    <profile>
+      <id>sonatype-nexus-staging</id>
+      <properties>
+        <morn.version>1.0.0.RELEASE</morn.version>
+      </properties>
+    </profile>
+  </profiles>
 
 </project>

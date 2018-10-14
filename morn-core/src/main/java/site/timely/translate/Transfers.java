@@ -9,38 +9,38 @@ package site.timely.translate;
  */
 public class Transfers {
 
-    private static final String MESSAGE_SUFFIX = "message";
+  private static final String MESSAGE_SUFFIX = "message";
 
-    private Transfer transfer;
+  private Transfer transfer;
 
-    private Transfers() {
-        this.transfer = new Transfer();
-    }
+  private Transfers() {
+    this.transfer = new Transfer();
+  }
 
-    public static Transfers build() {
-        return new Transfers();
-    }
+  public static Transfers build() {
+    return new Transfers();
+  }
 
-    public static Transfer transfer(String code) {
-        return build().code(code).generate();
-    }
+  public static Transfer transfer(String code) {
+    return build().code(code).generate();
+  }
 
-    public static Transfer transfer(String code, Object... args) {
-        return build().code(code).args(args).generate();
-    }
+  public static Transfer transfer(String code, Object... args) {
+    return build().code(code).args(args).generate();
+  }
 
-    public Transfer generate() {
-        return transfer;
-    }
+  public Transfer generate() {
+    return transfer;
+  }
 
-    public Transfers code(String code) {
-        transfer.setCode(code);
-        transfer.setMessage(code + "." + MESSAGE_SUFFIX);
-        return this;
-    }
+  public Transfers code(String code) {
+    transfer.setCode(code);
+    transfer.setMessage(code + "." + MESSAGE_SUFFIX);
+    return this;
+  }
 
-    public Transfers args(Object... args) {
-        transfer.setArgs(args);
-        return this;
-    }
+  public Transfers args(Object... args) {
+    transfer.setArgs(args);
+    return this;
+  }
 }

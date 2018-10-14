@@ -10,4 +10,5 @@ import site.timely.core.CriteriaMap;
  * @since 1.0
  */
 class SimpleRestMessage extends CriteriaMap implements RestMessage {
+
 }

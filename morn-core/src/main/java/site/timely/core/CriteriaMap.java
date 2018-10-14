@@ -10,4 +10,5 @@ import java.util.HashMap;
  * @since 1.0
  */
 public class CriteriaMap extends HashMap<String, Object> {
+
 }

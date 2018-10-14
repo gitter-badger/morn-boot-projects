@@ -8,17 +8,18 @@ package site.timely.tag;
  * @since 1.0
  */
 public interface AnnotationTag {
-    /**
-     * 获取名称标记
-     *
-     * @return 名称标记
-     */
-    String[] getTags();
 
-    /**
-     * 获取类型标记
-     *
-     * @return 类型标记
-     */
-    Class<?>[] getTargets();
+  /**
+   * 获取名称标记
+   *
+   * @return 名称标记
+   */
+  String[] getTags();
+
+  /**
+   * 获取类型标记
+   *
+   * @return 类型标记
+   */
+  Class<?>[] getTargets();
 }

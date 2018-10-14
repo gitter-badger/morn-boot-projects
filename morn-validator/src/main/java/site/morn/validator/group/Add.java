@@ -8,4 +8,5 @@ package site.morn.validator.group;
  * @since 1.0
  */
 public interface Add {
+
 }

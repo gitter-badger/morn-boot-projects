@@ -9,10 +9,11 @@ package site.timely.exception;
  */
 @FunctionalInterface
 public interface ExceptionResolver {
-    /**
-     * 解释异常
-     *
-     * @param throwable 异常
-     */
-    Object resolve(Throwable throwable);
+
+  /**
+   * 解释异常
+   *
+   * @param throwable 异常
+   */
+  Object resolve(Throwable throwable);
 }

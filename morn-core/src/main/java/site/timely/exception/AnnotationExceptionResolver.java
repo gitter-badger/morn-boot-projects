@@ -10,4 +10,5 @@ import site.timely.tag.AnnotationTag;
  * @since 1.0
  */
 public interface AnnotationExceptionResolver extends ExceptionResolver, AnnotationTag {
+
 }

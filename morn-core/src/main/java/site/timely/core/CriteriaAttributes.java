@@ -9,4 +9,5 @@ package site.timely.core;
  * @since 1.0
  */
 public interface CriteriaAttributes extends Attributes<String, Object> {
+
 }
