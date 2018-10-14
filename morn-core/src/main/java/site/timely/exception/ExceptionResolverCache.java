@@ -31,17 +31,24 @@ public interface ExceptionResolverCache {
      */
     List<ExceptionResolver> find(Class<?>... targets);
 
+//    /**
+//     * 缓存异常处理器
+//     *
+//     * @param resolvers 处理器集合
+//     */
+//    void put(List<AnnotationExceptionResolver> resolvers);
+
+//    /**
+//     * 缓存异常处理器
+//     *
+//     * @param resolver 处理器
+//     */
+//    void put(AnnotationExceptionResolver resolver);
+
     /**
      * 缓存异常处理器
      *
      * @param resolvers 处理器集合
      */
-    void put(List<AnnotationExceptionResolver> resolvers);
-
-    /**
-     * 缓存异常处理器
-     *
-     * @param resolver 处理器
-     */
-    void put(AnnotationExceptionResolver resolver);
+    void put(List<?> resolvers);
 }
