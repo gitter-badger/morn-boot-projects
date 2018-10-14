@@ -7,6 +7,7 @@ import site.timely.core.CriteriaAttributes;
  *
  * @author timely-rain
  * @version 1.0.0, 2018/7/25
+ * @see CriteriaAttributes 标准属性类
  * @since 1.0
  */
 public interface RestMessage extends CriteriaAttributes {
