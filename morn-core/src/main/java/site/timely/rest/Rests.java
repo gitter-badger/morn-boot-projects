@@ -17,8 +17,8 @@ import site.timely.translate.Translator;
  */
 public class Rests {
 
-  public static final String OK = "morn.rest.ok";
-  public static final String ERROR = "morn.rest.error";
+  private static final String CODE_OK = "morn.ok";
+  private static final String CODE_ERROR = "morn.error";
 
   private RestMessage entity;
   private RestConverter converter;
@@ -33,11 +33,11 @@ public class Rests {
   }
 
   public static Rests buildOk() {
-    return build().translate(OK).success(true).level(RestMessage.Level.Info);
+    return build().translate(CODE_OK).success(true).level(RestMessage.Level.Info);
   }
 
   public static Rests buildError() {
-    return build().translate(ERROR).success(false).level(RestMessage.Level.Error);
+    return build().translate(CODE_ERROR).success(false).level(RestMessage.Level.Error);
   }
 
   public static Rests buildError(String code, Object... args) {
@@ -155,7 +155,7 @@ public class Rests {
   @SuppressWarnings("unchecked")
   public <T> T convert() {
     RestMessage restMessage = generate();
-    RestConverter<T> converter = this.converter;
-    return converter.generic(restMessage);
+    RestConverter<T> restConverter = this.converter;
+    return restConverter.generic(restMessage);
   }
 }
