@@ -33,19 +33,19 @@ public interface RestPageableAttributes extends CriteriaAttributes {
    */
   String SIZE = "size";
 
-  default <T extends RestPageableAttributes> T setPage(int page) {
-    return set(PAGE, page);
-  }
-
   default int getPage() {
     return getExpect(PAGE, DEFAULT_PAGE);
   }
 
-  default <T extends RestPageableAttributes> T setSize(int size) {
-    return set(SIZE, size);
+  default <T extends RestPageableAttributes> T setPage(int page) {
+    return set(PAGE, page);
   }
 
   default int getSize() {
     return getExpect(SIZE, DEFAULT_SIZE);
+  }
+
+  default <T extends RestPageableAttributes> T setSize(int size) {
+    return set(SIZE, size);
   }
 }

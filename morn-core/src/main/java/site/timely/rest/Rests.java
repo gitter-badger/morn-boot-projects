@@ -145,9 +145,9 @@ public class Rests {
   }
 
   public RestMessage generate() {
-      if (Objects.isNull(translator)) {
-          translator = TranslateHolder.defaultTranslator();
-      }
+    if (Objects.isNull(translator)) {
+      translator = TranslateHolder.defaultTranslator();
+    }
     String message = translator.translate(transfer.getMessage(), transfer.getArgs());
     return entity.message(message);
   }
