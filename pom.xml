@@ -11,7 +11,7 @@
 
   <groupId>site.morn</groupId>
   <artifactId>morn-projects</artifactId>
-  <version>1.0.0.SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <description>Morn Projects - 基于Java的系列开发工具包</description>
@@ -29,7 +29,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <morn.version>1.0.0.SNAPSHOT</morn.version>
+    <morn.version>1.0.0-SNAPSHOT</morn.version>
     <lombok.version>1.16.22</lombok.version>
   </properties>
 
@@ -48,7 +48,7 @@
     <profile>
       <id>sonatype-nexus-snapshots</id>
       <properties>
-        <morn.version>1.0.0.SNAPSHOT</morn.version>
+        <morn.version>1.0.0-SNAPSHOT</morn.version>
       </properties>
     </profile>
     <profile>
