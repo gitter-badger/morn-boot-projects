@@ -54,7 +54,7 @@
     <profile>
       <id>sonatype-nexus-staging</id>
       <properties>
-        <morn.version>1.0.0.RELEASE</morn.version>
+        <morn.version>1.0.0-RELEASE</morn.version>
       </properties>
     </profile>
   </profiles>
