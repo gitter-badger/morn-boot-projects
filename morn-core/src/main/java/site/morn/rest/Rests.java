@@ -17,8 +17,8 @@ import site.morn.translate.Translator;
  */
 public class Rests {
 
-  private static final String CODE_OK = "morn.ok";
-  private static final String CODE_ERROR = "morn.error";
+  public static final String CODE_OK = "morn.ok";
+  public static final String CODE_ERROR = "morn.error";
 
   private RestMessage entity;
   private RestConverter converter;
