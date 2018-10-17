@@ -8,12 +8,12 @@ package site.timely.exception;
  * @since 1.0
  */
 @FunctionalInterface
-public interface ExceptionResolver {
+public interface ExceptionInterpreter {
 
   /**
    * 解释异常
    *
    * @param throwable 异常
    */
-  Object resolve(Throwable throwable);
+  ExceptionMessage resolve(Throwable throwable);
 }

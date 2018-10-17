@@ -9,12 +9,12 @@ import java.util.List;
  * @version 1.0.0, 2018/8/21
  * @since 1.0
  */
-public interface ExceptionResolverCache {
+public interface ExceptionInterpreterCache {
 
   /**
    * 默认缓存名称
    */
-  String DEFAULT_CACHE = "defaultExceptionResolverCache";
+  String DEFAULT_CACHE = "defaultExceptionInterpreterCache";
 
   /**
    * 搜索异常处理器
@@ -22,7 +22,7 @@ public interface ExceptionResolverCache {
    * @param tag 标签
    * @return 异常处理器
    */
-  List<ExceptionResolver> find(String tag);
+  List<ExceptionInterpreter> find(String tag);
 
   /**
    * 搜索异常处理器
@@ -30,12 +30,12 @@ public interface ExceptionResolverCache {
    * @param targets 处理类型
    * @return 异常处理器
    */
-  List<ExceptionResolver> find(Class<?>... targets);
+  List<ExceptionInterpreter> find(Class<?>... targets);
 
   /**
    * 缓存异常处理器
    *
    * @param resolver 处理器
    */
-  void put(ExceptionResolver resolver);
+  void put(AnnotationExceptionInterpreterHolder resolver);
 }

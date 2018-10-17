@@ -10,7 +10,8 @@ import lombok.Setter;
  * @since 1.0
  */
 @Setter
-public class SimpleAnnotationExceptionResolver implements AnnotationExceptionResolver {
+public class SimpleAnnotationExceptionInterpreterHolder implements
+    AnnotationExceptionInterpreterHolder {
 
   /**
    * 标签
@@ -25,7 +26,7 @@ public class SimpleAnnotationExceptionResolver implements AnnotationExceptionRes
   /**
    * 异常解释器
    */
-  private ExceptionResolver resolver;
+  private ExceptionInterpreter resolver;
 
   @Override
   public String[] getTags() {
@@ -38,7 +39,7 @@ public class SimpleAnnotationExceptionResolver implements AnnotationExceptionRes
   }
 
   @Override
-  public Object resolve(Throwable throwable) {
-    return resolver.resolve(throwable);
+  public ExceptionInterpreter getExceptionInterpreter() {
+    return resolver;
   }
 }
