@@ -1,7 +1,7 @@
-package site.timely.rest.convert;
+package site.morn.rest.convert;
 
-import site.timely.core.BeanConverter;
-import site.timely.rest.RestMessage;
+import site.morn.core.BeanConverter;
+import site.morn.rest.RestMessage;
 
 /**
  * REST消息体转换器

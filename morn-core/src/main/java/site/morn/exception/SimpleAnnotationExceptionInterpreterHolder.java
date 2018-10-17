@@ -1,4 +1,4 @@
-package site.timely.exception;
+package site.morn.exception;
 
 import lombok.Setter;
 

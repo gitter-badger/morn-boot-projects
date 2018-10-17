@@ -1,4 +1,4 @@
-package site.timely.translate;
+package site.morn.translate;
 
 import lombok.Getter;
 import lombok.Setter;

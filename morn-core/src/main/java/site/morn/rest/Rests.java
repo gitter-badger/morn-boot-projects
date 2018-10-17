@@ -1,12 +1,12 @@
-package site.timely.rest;
+package site.morn.rest;
 
 import java.util.Objects;
-import site.timely.rest.convert.RestConvertHolder;
-import site.timely.rest.convert.RestConverter;
-import site.timely.translate.Transfer;
-import site.timely.translate.Transfers;
-import site.timely.translate.TranslateHolder;
-import site.timely.translate.Translator;
+import site.morn.rest.convert.RestConvertHolder;
+import site.morn.rest.convert.RestConverter;
+import site.morn.translate.Transfer;
+import site.morn.translate.Transfers;
+import site.morn.translate.TranslateHolder;
+import site.morn.translate.Translator;
 
 /**
  * REST工具类

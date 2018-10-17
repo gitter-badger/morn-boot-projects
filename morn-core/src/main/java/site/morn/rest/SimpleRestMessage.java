@@ -1,6 +1,6 @@
-package site.timely.rest;
+package site.morn.rest;
 
-import site.timely.core.CriteriaMap;
+import site.morn.core.CriteriaMap;
 
 /**
  * REST消息体

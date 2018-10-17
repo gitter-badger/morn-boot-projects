@@ -1,4 +1,4 @@
-package site.timely.core;
+package site.morn.core;
 
 import java.util.Map;
 import java.util.Objects;

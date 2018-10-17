@@ -1,4 +1,4 @@
-package site.timely.tag.annotation;
+package site.morn.tag.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

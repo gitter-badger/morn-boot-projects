@@ -1,4 +1,4 @@
-package site.timely.exception;
+package site.morn.exception;
 
 /**
  * 异常处理器

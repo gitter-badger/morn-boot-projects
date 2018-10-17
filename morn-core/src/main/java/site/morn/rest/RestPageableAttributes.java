@@ -1,7 +1,7 @@
-package site.timely.rest;
+package site.morn.rest;
 
 
-import site.timely.core.CriteriaAttributes;
+import site.morn.core.CriteriaAttributes;
 
 /**
  * REST分页参数

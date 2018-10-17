@@ -1,4 +1,4 @@
-package site.timely.core;
+package site.morn.core;
 
 import java.util.Collection;
 import java.util.Objects;

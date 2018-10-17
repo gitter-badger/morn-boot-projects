@@ -1,4 +1,4 @@
-package site.timely.translate;
+package site.morn.translate;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package site.timely.exception;
+package site.morn.exception;
 
-import site.timely.tag.AnnotationTag;
+import site.morn.tag.AnnotationTag;
 
 /**
  * 注解异常解释器

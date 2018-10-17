@@ -1,4 +1,4 @@
-package site.timely.core;
+package site.morn.core;
 
 /**
  * 标准属性类
