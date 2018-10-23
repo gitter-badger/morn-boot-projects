@@ -18,7 +18,6 @@
 
   <modules>
     <module>morn-core</module>
-    <module>morn-exception</module>
     <module>morn-validator</module>
   </modules>
 
