@@ -158,4 +158,11 @@ public class Rests {
     RestConverter<T> restConverter = this.converter;
     return restConverter.generic(restMessage);
   }
+
+  @SuppressWarnings("unchecked")
+  public <T> T convert(Class<T> cls) {
+    RestMessage restMessage = generate();
+    RestConverter<T> restConverter = this.converter;
+    return restConverter.generic(restMessage);
+  }
 }
