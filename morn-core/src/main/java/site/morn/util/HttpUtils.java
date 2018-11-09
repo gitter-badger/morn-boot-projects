@@ -4,14 +4,16 @@ package site.morn.util;
  * Http工具类
  *
  * @author timely-rain
- * @version 1.0.0, 2018/10/23
- * @since 1.0
+ * @since 1.0.0, 2018/10/23
  */
 public final class HttpUtils {
 
   private HttpUtils() {
   }
 
+  /**
+   * Http Header
+   */
   public final class Header {
 
     private Header() {
@@ -20,6 +22,10 @@ public final class HttpUtils {
     public static final String CONTENT_TYPE = "Content-Type";
   }
 
+
+  /**
+   * Http ContentType
+   */
   public final class ContentType {
 
     private ContentType() {
