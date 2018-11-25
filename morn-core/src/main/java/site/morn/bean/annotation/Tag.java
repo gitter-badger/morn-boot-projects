@@ -21,11 +21,4 @@ public @interface Tag {
    * @return 名称标记
    */
   String[] tags() default {};
-
-  /**
-   * 获取类型标记
-   *
-   * @return 类型标记
-   */
-  Class<?>[] targets() default {};
 }

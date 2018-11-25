@@ -19,11 +19,4 @@ public interface AnnotationTag {
    * @return 名称标记
    */
   String[] getTags();
-
-  /**
-   * 获取类型标记
-   *
-   * @return 类型标记
-   */
-  Class<?>[] getTargets();
 }
