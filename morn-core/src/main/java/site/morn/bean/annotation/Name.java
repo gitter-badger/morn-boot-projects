@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * 命名注解
  *
- * <p>名称是唯一的，否则请使用标记注解{@link Tag}
+ * <p>名称是唯一的，否则请使用标签注解{@link Tag}
  *
  * @author timely-rain
  * @since 1.0.0, 2018/11/25
