@@ -6,6 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * 标记注解
  *
+ * <p>标记是可重复的，否则请使用名称{@link Name}
+ *
  * @author timely-rain
  * @version 1.0.0, 2018/8/19
  * @since 1.0
