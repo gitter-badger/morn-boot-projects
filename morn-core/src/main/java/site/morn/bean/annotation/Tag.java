@@ -4,9 +4,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * 标记注解
+ * 标签注解
  *
- * <p>标记是可重复的，否则请使用名称{@link Name}
+ * <p>标签是可重复的，否则请使用名称{@link Name}
  *
  * @author timely-rain
  * @version 1.0.0, 2018/8/19
@@ -16,9 +16,9 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Tag {
 
   /**
-   * 获取名称标记
+   * 获取名称标签
    *
-   * @return 名称标记
+   * @return 名称标签
    */
   String[] tags() default {};
 }
