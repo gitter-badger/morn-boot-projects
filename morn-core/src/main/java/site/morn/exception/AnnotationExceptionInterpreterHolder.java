@@ -1,6 +1,6 @@
 package site.morn.exception;
 
-import site.morn.tag.AnnotationTag;
+import site.morn.bean.AnnotationTag;
 
 /**
  * 注解异常解释器

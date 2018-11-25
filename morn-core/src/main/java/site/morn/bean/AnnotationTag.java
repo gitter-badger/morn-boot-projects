@@ -1,4 +1,4 @@
-package site.morn.tag;
+package site.morn.bean;
 
 /**
  * 注解标记
