@@ -16,14 +16,8 @@ public final class ArrayUtils {
    * @param array 数组
    * @return 数组是否为空
    */
-  public static boolean isEmpty(Object array) {
-    if (Objects.isNull(array)) {
-      return true;
-    }
-    if (array.getClass().isArray()) {
-      return ((Object[]) array).length != 0;
-    }
-    return false;
+  public static boolean isEmpty(Object[] array) {
+    return Objects.isNull(array) || array.length == 0;
   }
 
   /**
