@@ -13,10 +13,15 @@ import java.util.Collection;
 public interface IdentifiedBeanCache {
 
   /**
+   * 默认缓存名称
+   */
+  String DEFAULT_CACHE = "defaultBeanCache";
+
+  /**
    * 注册实例持有者
    *
    * @param holder 实例持有者
-   * @param <T> 实例类型
+   * @param <T> 检索类型
    */
   <T> void register(IdentifiedBeanHolder<T> holder);
 
@@ -27,7 +32,7 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  <T> Collection<T> search(AnnotationIdentify identify);
+  <T> Collection<T> search(Class<T> type, AnnotationIdentify identify);
 
   /**
    * 按名称搜索实例
@@ -36,9 +41,9 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByName(String name) {
+  default <T> Collection<T> searchByName(Class<T> type, String name) {
     BeanIdentify identify = BeanIdentify.builder().name(name).build();
-    return search(identify);
+    return search(type, identify);
   }
 
   /**
@@ -48,9 +53,9 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTags(String... tags) {
+  default <T> Collection<T> searchByTags(Class<T> type, String... tags) {
     BeanIdentify identify = BeanIdentify.builder().tags(tags).build();
-    return search(identify);
+    return search(type, identify);
   }
 
   /**
@@ -60,8 +65,8 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTarget(Class<?> target) {
+  default <T> Collection<T> searchByTarget(Class<T> type, Class<?> target) {
     BeanIdentify identify = BeanIdentify.builder().target(target).build();
-    return search(identify);
+    return search(type, identify);
   }
 }
