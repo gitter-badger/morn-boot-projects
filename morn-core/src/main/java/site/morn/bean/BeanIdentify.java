@@ -3,6 +3,7 @@ package site.morn.bean;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 实例标识
@@ -15,9 +16,10 @@ import lombok.Setter;
  * @see site.morn.bean.annotation.Target
  * @since 1.0.0, 2018/11/25
  */
+@Builder
 @Getter
 @Setter
-@Builder
+@ToString
 public class BeanIdentify implements AnnotationIdentify {
 
   /**
