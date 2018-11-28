@@ -34,11 +34,6 @@ public class SimpleAnnotationExceptionInterpreterHolder implements
   }
 
   @Override
-  public Class<?>[] getTargets() {
-    return targets;
-  }
-
-  @Override
   public ExceptionInterpreter getExceptionInterpreter() {
     return resolver;
   }
