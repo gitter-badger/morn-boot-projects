@@ -1,6 +1,6 @@
 package site.morn.bean;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * 标识的实例缓存
@@ -32,7 +32,7 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  <T> Collection<T> search(Class<T> type, AnnotationIdentify identify);
+  <T> List<T> search(Class<T> type, AnnotationIdentify identify);
 
   /**
    * 按名称搜索实例
@@ -41,7 +41,7 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByName(Class<T> type, String name) {
+  default <T> List<T> searchByName(Class<T> type, String name) {
     BeanIdentify identify = BeanIdentify.builder().name(name).build();
     return search(type, identify);
   }
@@ -53,7 +53,7 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTags(Class<T> type, String... tags) {
+  default <T> List<T> searchByTags(Class<T> type, String... tags) {
     BeanIdentify identify = BeanIdentify.builder().tags(tags).build();
     return search(type, identify);
   }
@@ -65,7 +65,7 @@ public interface IdentifiedBeanCache {
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTarget(Class<T> type, Class<?> target) {
+  default <T> List<T> searchByTarget(Class<T> type, Class<?> target) {
     BeanIdentify identify = BeanIdentify.builder().target(target).build();
     return search(type, identify);
   }
