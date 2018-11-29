@@ -47,6 +47,17 @@ public class Rests {
   private Rests() {
   }
 
+  /**
+   * 初始化
+   *
+   * @param beanCache 标识实例缓存
+   * @param translator 翻译器
+   */
+  public static void initialize(IdentifiedBeanCache beanCache, Translator translator) {
+    Rests.beanCache = beanCache;
+    Rests.translator = translator;
+  }
+
   private static Rests build() {
     return new Rests().entity(new SimpleRestMessage());
   }
