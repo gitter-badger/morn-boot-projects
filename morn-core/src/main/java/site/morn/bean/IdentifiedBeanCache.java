@@ -39,11 +39,15 @@ public interface IdentifiedBeanCache {
    *
    * @param name 名称
    * @param <T> 实例类型
-   * @return 实例集合
+   * @return 实例
    */
-  default <T> List<T> bean(Class<T> type, String name) {
+  default <T> T bean(Class<T> type, String name) {
     BeanIdentify identify = BeanIdentify.builder().name(name).build();
-    return beans(type, identify);
+    List<T> beans = beans(type, identify);
+    if (beans.isEmpty()) {
+      return null;
+    }
+    return beans.get(0);
   }
 
   /**
