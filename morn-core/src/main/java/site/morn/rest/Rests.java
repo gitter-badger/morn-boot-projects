@@ -17,12 +17,12 @@ public class Rests {
   /**
    * 成功状态码
    */
-  private static final String CODE_OK = "morn.ok";
+  public static final String CODE_OK = "morn.ok";
 
   /**
    * 错误状态码
    */
-  private static final String CODE_ERROR = "morn.error";
+  public static final String CODE_ERROR = "morn.error";
 
   /**
    * 标识实例缓存
