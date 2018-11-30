@@ -26,47 +26,47 @@ public interface IdentifiedBeanCache {
   <T> void register(IdentifiedBeanHolder<T> holder);
 
   /**
-   * 按标识搜索实例
+   * 按标识检索实例
    *
    * @param identify 标识
    * @param <T> 实例类型
    * @return 实例集合
    */
-  <T> List<T> search(Class<T> type, AnnotationIdentify identify);
+  <T> List<T> beans(Class<T> type, AnnotationIdentify identify);
 
   /**
-   * 按名称搜索实例
+   * 按名称检索实例
    *
    * @param name 名称
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> List<T> searchByName(Class<T> type, String name) {
+  default <T> List<T> bean(Class<T> type, String name) {
     BeanIdentify identify = BeanIdentify.builder().name(name).build();
-    return search(type, identify);
+    return beans(type, identify);
   }
 
   /**
-   * 按标签搜索实例
+   * 按标签检索实例
    *
    * @param tags 标签
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> List<T> searchByTags(Class<T> type, String... tags) {
+  default <T> List<T> beans(Class<T> type, String... tags) {
     BeanIdentify identify = BeanIdentify.builder().tags(tags).build();
-    return search(type, identify);
+    return beans(type, identify);
   }
 
   /**
-   * 按目标搜索实例
+   * 按目标检索实例
    *
    * @param target 目标
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> List<T> searchByTarget(Class<T> type, Class<?> target) {
+  default <T> List<T> beans(Class<T> type, Class<?> target) {
     BeanIdentify identify = BeanIdentify.builder().target(target).build();
-    return search(type, identify);
+    return beans(type, identify);
   }
 }
