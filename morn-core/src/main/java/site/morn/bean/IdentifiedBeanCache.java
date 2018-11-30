@@ -18,12 +18,12 @@ public interface IdentifiedBeanCache {
   String DEFAULT_CACHE = "defaultBeanCache";
 
   /**
-   * 注册实例持有者
+   * 存储实例持有者
    *
    * @param holder 实例持有者
    * @param <T> 检索类型
    */
-  <T> void register(IdentifiedBeanHolder<T> holder);
+  <T> void cache(IdentifiedBeanHolder<T> holder);
 
   /**
    * 按标识检索实例
