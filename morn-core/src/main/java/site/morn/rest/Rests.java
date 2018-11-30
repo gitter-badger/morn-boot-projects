@@ -2,6 +2,7 @@ package site.morn.rest;
 
 import java.util.List;
 import site.morn.bean.IdentifiedBeanCache;
+import site.morn.rest.RestMessage.Level;
 import site.morn.rest.convert.RestConverter;
 import site.morn.translate.Transfer;
 import site.morn.translate.Translator;
@@ -58,20 +59,28 @@ public class Rests {
     Rests.translator = translator;
   }
 
-  private static Rests build() {
+  private static Rests pure() {
     return new Rests().entity(new SimpleRestMessage());
   }
 
+  private static Rests pureOk() {
+    return pure().success(true).level(Level.Info);
+  }
+
+  private static Rests pureError() {
+    return pure().success(false).level(Level.Error);
+  }
+
   public static Rests buildOk() {
-    return build().translate(CODE_OK).success(true).level(RestMessage.Level.Info);
+    return pureOk().code(CODE_OK).translate(CODE_OK);
   }
 
   public static Rests buildError() {
-    return buildError(CODE_ERROR).success(false).level(RestMessage.Level.Error);
+    return pureError().code(CODE_ERROR).translate(CODE_ERROR);
   }
 
   public static Rests buildError(String code, Object... args) {
-    return build().translate(code, args).success(false).level(RestMessage.Level.Error);
+    return pureError().code(code).translate(code, args);
   }
 
   public static RestMessage ok() {
@@ -143,7 +152,7 @@ public class Rests {
 
   public Rests translate(String code, Object... args) {
     this.transfer = Transfer.builder().code(code).args(args).build();
-    return this.code(code);
+    return this;
   }
 
   public Rests success(boolean value) {
@@ -156,7 +165,7 @@ public class Rests {
     return this;
   }
 
-  public Rests level(RestMessage.Level level) {
+  public Rests level(Level level) {
     entity.level(level);
     return this;
   }
@@ -190,6 +199,6 @@ public class Rests {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
-    return restConverter.generic(this.entity);
+    return restConverter.generic(generate());
   }
 }
