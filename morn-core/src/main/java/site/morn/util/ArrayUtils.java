@@ -21,6 +21,17 @@ public final class ArrayUtils {
   }
 
   /**
+   * 合并为数组
+   *
+   * @param ts 不定项变量
+   * @param <T> 变量类型
+   * @return 数组
+   */
+  public static <T> T[] merge(T... ts) {
+    return ts;
+  }
+
+  /**
    * 任意检索
    *
    * <p>sources为空时，返回true
