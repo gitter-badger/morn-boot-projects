@@ -20,5 +20,5 @@ public @interface Tag {
    *
    * @return 名称标签
    */
-  String[] tags() default {};
+  String[] value() default {};
 }

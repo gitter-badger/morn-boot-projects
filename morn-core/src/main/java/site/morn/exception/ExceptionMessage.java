@@ -1,5 +1,6 @@
 package site.morn.exception;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +8,9 @@ import lombok.Setter;
  * 异常消息
  *
  * @author timely-rain
- * @version 1.0.0, 2018/10/16
- * @since 1.0
+ * @since 1.0.0, 2018/10/16
  */
+@Builder
 @Getter
 @Setter
 public class ExceptionMessage {

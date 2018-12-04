@@ -1,16 +1,12 @@
 package site.morn.rest;
 
-import site.morn.core.CriteriaAttributes;
-
 /**
  * REST消息体
  *
  * @author timely-rain
- * @version 1.0.0, 2018/7/25
- * @see CriteriaAttributes 标准属性类
- * @since 1.0
+ * @since 1.0.0, 2018/7/25
  */
-public interface RestMessage extends CriteriaAttributes {
+public interface RestMessage {
 
   /**
    * 成功标识
@@ -39,45 +35,59 @@ public interface RestMessage extends CriteriaAttributes {
    */
   String DATA = "data";
 
-  default <T extends RestMessage> T success(boolean value) {
-    return set(SUCCESS, value);
-  }
+  /**
+   * 成功标识
+   */
+  <T extends RestMessage> T success(boolean value);
 
-  default boolean success() {
-    return getBoolean(SUCCESS);
-  }
+  /**
+   * 成功标识
+   */
+  boolean success();
 
-  default <T extends RestMessage> T code(String value) {
-    return set(CODE, value);
-  }
+  /**
+   * 状态码
+   */
+  <T extends RestMessage> T code(String value);
 
-  default String code() {
-    return getString(CODE);
-  }
+  /**
+   * 状态码
+   */
+  String code();
 
-  default <T extends RestMessage> T level(Level level) {
-    return set(LEVEL, level.value);
-  }
+  /**
+   * 消息级别
+   *
+   * @see Level 级别枚举
+   */
+  <T extends RestMessage> T level(Level level);
 
-  default String level() {
-    return getString(LEVEL);
-  }
+  /**
+   * 消息级别
+   *
+   * @see Level 级别枚举
+   */
+  String level();
 
-  default <T extends RestMessage> T message(String value) {
-    return set(MESSAGE, value);
-  }
+  /**
+   * 消息内容
+   */
+  <T extends RestMessage> T message(String value);
 
-  default String message() {
-    return getString(MESSAGE);
-  }
+  /**
+   * 消息内容
+   */
+  String message();
 
-  default <T extends RestMessage> T data(Object value) {
-    return set(DATA, value);
-  }
+  /**
+   * 数据
+   */
+  <T extends RestMessage> T data(Object value);
 
-  default <T> T data() {
-    return getExpect(DATA);
-  }
+  /**
+   * 数据
+   */
+  <T> T data();
 
   /**
    * 消息级别

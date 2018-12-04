@@ -1,6 +1,6 @@
 package site.morn.bean;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * 标识的实例缓存
@@ -18,55 +18,59 @@ public interface IdentifiedBeanCache {
   String DEFAULT_CACHE = "defaultBeanCache";
 
   /**
-   * 注册实例持有者
+   * 存储实例持有者
    *
    * @param holder 实例持有者
    * @param <T> 检索类型
    */
-  <T> void register(IdentifiedBeanHolder<T> holder);
+  <T> void cache(IdentifiedBeanHolder<T> holder);
 
   /**
-   * 按标识搜索实例
+   * 按标识检索实例
    *
    * @param identify 标识
    * @param <T> 实例类型
    * @return 实例集合
    */
-  <T> Collection<T> search(Class<T> type, AnnotationIdentify identify);
+  <T> List<T> beans(Class<T> type, AnnotationIdentify identify);
 
   /**
-   * 按名称搜索实例
+   * 按名称检索实例
    *
    * @param name 名称
    * @param <T> 实例类型
-   * @return 实例集合
+   * @return 实例
    */
-  default <T> Collection<T> searchByName(Class<T> type, String name) {
+  default <T> T bean(Class<T> type, String name) {
     BeanIdentify identify = BeanIdentify.builder().name(name).build();
-    return search(type, identify);
+    List<T> beans = beans(type, identify);
+    if (beans.isEmpty()) {
+      return null;
+    }
+    return beans.get(0);
   }
 
   /**
-   * 按标签搜索实例
+   * 按标签检索实例
    *
    * @param tags 标签
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTags(Class<T> type, String... tags) {
+  default <T> List<T> beans(Class<T> type, String... tags) {
     BeanIdentify identify = BeanIdentify.builder().tags(tags).build();
-    return search(type, identify);
+    return beans(type, identify);
   }
 
   /**
-   * 按目标搜索实例
+   * 按目标检索实例
    *
    * @param target 目标
    * @param <T> 实例类型
    * @return 实例集合
    */
-  default <T> Collection<T> searchByTarget(Class<T> type, Class<?> target) {
+  default <T> List<T> beans(Class<T> type, Class<?> target) {
     BeanIdentify identify = BeanIdentify.builder().target(target).build();
-    return search(type, identify);
+    return beans(type, identify);
   }
 }
