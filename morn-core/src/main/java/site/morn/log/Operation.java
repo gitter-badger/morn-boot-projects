@@ -4,6 +4,7 @@ import java.util.Date;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 操作实例
@@ -14,6 +15,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
+@ToString
 public class Operation {
 
   /**
