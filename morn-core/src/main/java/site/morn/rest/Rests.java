@@ -114,7 +114,7 @@ public class Rests {
   public static <T> RestMessage from(T foreign) {
     List<RestConverter> restConverters = beanCache
         .beans(RestConverter.class, foreign.getClass());
-    if (restConverters.size() == 0) {
+    if (restConverters.isEmpty()) {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
@@ -133,7 +133,7 @@ public class Rests {
   public static <T> T to(RestMessage restMessage, Class<T> foreign) {
     List<RestConverter> restConverters = beanCache
         .beans(RestConverter.class, foreign);
-    if (restConverters.size() == 0) {
+    if (restConverters.isEmpty()) {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
@@ -195,7 +195,7 @@ public class Rests {
   public <T> T to(Class<T> foreign) {
     List<RestConverter> restConverters = beanCache
         .beans(RestConverter.class, foreign);
-    if (restConverters.size() == 0) {
+    if (restConverters.isEmpty()) {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
