@@ -51,6 +51,22 @@ public interface IdentifiedBeanCache {
   }
 
   /**
+   * 按目标检索实例
+   *
+   * @param target 目标
+   * @param <T> 实例类型
+   * @return 实例对象
+   */
+  default <T> T bean(Class<T> type, Class<?> target) {
+    BeanIdentify identify = BeanIdentify.builder().target(target).build();
+    List<T> beans = beans(type, identify);
+    if (beans.isEmpty()) {
+      return null;
+    }
+    return beans.get(0);
+  }
+
+  /**
    * 按标签检索实例
    *
    * @param tags 标签
