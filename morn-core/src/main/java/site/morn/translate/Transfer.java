@@ -15,8 +15,6 @@ import lombok.Setter;
 @Setter
 public class Transfer {
 
-  public static final String MESSAGE_SUFFIX = "message";
-
   /**
    * 国际化编码
    */
@@ -28,11 +26,12 @@ public class Transfer {
   private Object[] args;
 
   /**
-   * 获取国际化消息编码
+   * 获取国际化编码
    *
-   * @return 国际化消息编码
+   * @param suffix 后缀
+   * @return 国际化编码
    */
-  public String getMessageCode() {
-    return code + "." + MESSAGE_SUFFIX;
+  protected String getCode(String suffix) {
+    return code + "." + suffix;
   }
 }

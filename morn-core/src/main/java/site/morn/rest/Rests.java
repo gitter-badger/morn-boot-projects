@@ -181,8 +181,8 @@ public class Rests {
   }
 
   public RestMessage generate() {
-    String message = translator.translate(transfer.getMessageCode(), transfer.getArgs());
-    return entity.message(message);
+    RestMessage restMessage = translator.translate(transfer, RestMessage.class);
+    return entity.message(restMessage.message());
   }
 
   /**
