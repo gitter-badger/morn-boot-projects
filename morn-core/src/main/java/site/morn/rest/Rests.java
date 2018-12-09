@@ -118,7 +118,7 @@ public class Rests {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
-    return restConverter.prototype(foreign);
+    return restConverter.revert(foreign);
   }
 
   /**
@@ -137,7 +137,7 @@ public class Rests {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
-    return restConverter.generic(restMessage);
+    return restConverter.convert(restMessage);
   }
 
   /**
@@ -199,6 +199,6 @@ public class Rests {
       return null;
     }
     RestConverter<T> restConverter = restConverters.get(0);
-    return restConverter.generic(generate());
+    return restConverter.convert(generate());
   }
 }

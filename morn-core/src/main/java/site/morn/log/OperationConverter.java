@@ -11,7 +11,7 @@ import site.morn.core.BeanConverter;
 public interface OperationConverter extends BeanConverter<OperateMeta, Operation> {
 
   @Override
-  default OperateMeta prototype(Operation generic) {
+  default OperateMeta revert(Operation target) {
     return null;
   }
 }
