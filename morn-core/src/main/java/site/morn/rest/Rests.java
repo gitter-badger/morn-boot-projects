@@ -1,6 +1,6 @@
 package site.morn.rest;
 
-import java.util.List;
+import java.util.Objects;
 import site.morn.bean.IdentifiedBeanCache;
 import site.morn.rest.RestMessage.Level;
 import site.morn.rest.convert.RestConverter;
@@ -112,12 +112,10 @@ public class Rests {
    * @see RestConverter REST消息转换器
    */
   public static <T> RestMessage from(T foreign) {
-    List<RestConverter> restConverters = beanCache
-        .beans(RestConverter.class, foreign.getClass());
-    if (restConverters.isEmpty()) {
+    RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign.getClass());
+    if (Objects.isNull(restConverter)) {
       return null;
     }
-    RestConverter<T> restConverter = restConverters.get(0);
     return restConverter.revert(foreign);
   }
 
@@ -131,12 +129,10 @@ public class Rests {
    * @see RestConverter REST消息转换器
    */
   public static <T> T to(RestMessage restMessage, Class<T> foreign) {
-    List<RestConverter> restConverters = beanCache
-        .beans(RestConverter.class, foreign);
-    if (restConverters.isEmpty()) {
+    RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign);
+    if (Objects.isNull(restConverter)) {
       return null;
     }
-    RestConverter<T> restConverter = restConverters.get(0);
     return restConverter.convert(restMessage);
   }
 
@@ -193,12 +189,10 @@ public class Rests {
    * @return 外来消息
    */
   public <T> T to(Class<T> foreign) {
-    List<RestConverter> restConverters = beanCache
-        .beans(RestConverter.class, foreign);
-    if (restConverters.isEmpty()) {
+    RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign);
+    if (Objects.isNull(restConverter)) {
       return null;
     }
-    RestConverter<T> restConverter = restConverters.get(0);
     return restConverter.convert(generate());
   }
 }
