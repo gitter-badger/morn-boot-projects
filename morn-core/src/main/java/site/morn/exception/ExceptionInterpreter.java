@@ -4,8 +4,7 @@ package site.morn.exception;
  * 异常解释器
  *
  * @author timely-rain
- * @version 1.0.0, 2018/8/19
- * @since 1.0
+ * @since 1.0.0, 2018/8/19
  */
 @FunctionalInterface
 public interface ExceptionInterpreter {

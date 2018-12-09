@@ -9,8 +9,7 @@ import java.lang.annotation.RetentionPolicy;
  * <p>标签是可重复的，否则请使用名称{@link Name}
  *
  * @author timely-rain
- * @version 1.0.0, 2018/8/19
- * @since 1.0
+ * @since 1.0.0, 2018/8/19
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Tag {

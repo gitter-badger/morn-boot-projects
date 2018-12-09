@@ -7,7 +7,9 @@ package site.morn.core;
  *
  * @param <S> 源类型
  * @param <T> 目标类型
+ * @author timely-rain
  * @see BeanConverter 实例转换器
+ * @since 1.0.0, 2018/12/10
  */
 public interface BeanChanger<S, T> {
 

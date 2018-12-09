@@ -6,8 +6,7 @@ import java.util.Locale;
  * 翻译器
  *
  * @author timely-rain
- * @version 1.0.0, 2018/8/14
- * @since 1.0
+ * @since 1.0.0, 2018/8/14
  */
 public interface Translator {
 

@@ -9,9 +9,8 @@ import java.util.stream.Stream;
  * 类转换器
  *
  * @author timely-rain
- * @version 1.0.0, 2018/5/31
  * @apiNote P-模板类型, G-业务类型
- * @since 1.0
+ * @since 1.0.0, 2018/5/31
  */
 public interface BeanConverter<P, G> {
 
