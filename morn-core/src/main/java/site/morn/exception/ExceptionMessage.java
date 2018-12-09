@@ -24,4 +24,20 @@ public class ExceptionMessage {
    * 异常消息
    */
   private String message;
+
+  /**
+   * 创建应用异常
+   *
+   * @return 应用异常
+   */
+  public ApplicationExceptin exception() {
+    return new ApplicationExceptin(this);
+  }
+
+  /**
+   * 抛出应用异常
+   */
+  public void throwing() {
+    throw exception();
+  }
 }
