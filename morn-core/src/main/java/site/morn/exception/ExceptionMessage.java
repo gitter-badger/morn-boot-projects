@@ -26,6 +26,11 @@ public class ExceptionMessage {
   private String message;
 
   /**
+   * 异常解决方案
+   */
+  private String solution;
+
+  /**
    * 创建应用异常
    *
    * @return 应用异常
