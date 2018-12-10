@@ -33,4 +33,16 @@ public class Translators {
   public static Translator defaultTranslator() {
     return defaultTranslator;
   }
+
+  /**
+   * 格式化国际编码
+   *
+   * @param prefix 前缀
+   * @param code 国际化编码
+   * @param suffix 后缀
+   * @return 国际化编码
+   */
+  public static String formatCode(String prefix, String code, String suffix) {
+    return String.format("%s.%s.%s", prefix, code, suffix);
+  }
 }
