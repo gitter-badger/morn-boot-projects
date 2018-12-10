@@ -4,8 +4,7 @@ package site.morn.exception;
  * 异常处理器
  *
  * @author timely-rain
- * @version 1.0.0, 2018/10/16
- * @since 1.0
+ * @since 1.0.0, 2018/10/16
  */
 public interface ExceptionProcessor {
 

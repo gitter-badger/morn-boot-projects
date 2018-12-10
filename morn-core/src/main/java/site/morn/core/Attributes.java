@@ -7,9 +7,8 @@ import java.util.Objects;
  * 基础属性类
  *
  * @author timely-rain
- * @version 1.0.0, 2018/7/10
  * @see Map
- * @since 1.0
+ * @since 1.0.0, 2018/7/10
  */
 public interface Attributes<K, V> extends Map<K, V> {
 

@@ -7,9 +7,8 @@ import site.morn.core.CriteriaAttributes;
  * REST分页参数
  *
  * @author timely-rain
- * @version 1.0.0, 2018/7/10
  * @see CriteriaAttributes 标准属性类
- * @since 1.0
+ * @since 1.0.0, 2018/7/10
  */
 public interface RestPageableAttributes extends CriteriaAttributes {
 
