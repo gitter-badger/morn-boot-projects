@@ -25,7 +25,7 @@ public class Warnings {
    * @param args 警告参数
    * @return 警告消息
    */
-  public static ExceptionMessage message(String code, Object... args) {
+  public static Warning message(String code, Object... args) {
     return builder().code(code).arguments(args).build();
   }
 
@@ -65,7 +65,7 @@ public class Warnings {
    *
    * @return 警告消息
    */
-  private ExceptionMessage build() {
-    return Translators.defaultTranslator().translate(transfer, ExceptionMessage.class);
+  private Warning build() {
+    return Translators.defaultTranslator().translate(transfer, Warning.class);
   }
 }

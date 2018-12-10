@@ -14,8 +14,8 @@ import site.morn.translate.Translators;
  * @since 1.0.0, 2018/12/10
  */
 @RequiredArgsConstructor
-@Target(ExceptionMessage.class)
-public class DefaultExceptionChanger implements TranslateChanger<ExceptionMessage> {
+@Target(Warning.class)
+public class DefaultExceptionChanger implements TranslateChanger<Warning> {
 
   /**
    * 警告前缀
@@ -38,7 +38,7 @@ public class DefaultExceptionChanger implements TranslateChanger<ExceptionMessag
   private final Translator translator;
 
   @Override
-  public ExceptionMessage change(Transfer transfer) {
+  public Warning change(Transfer transfer) {
     String code = transfer.getCode();
     // 格式化国际编码
     String messageCode = Translators.formatCode(PREFIX, code, MESSAGE_SUFFIX);
@@ -47,6 +47,6 @@ public class DefaultExceptionChanger implements TranslateChanger<ExceptionMessag
     String message = translator.translate(messageCode, transfer.getArgs());
     String solution = translator.translate(solutionCode, transfer.getArgs());
     // 构建异常消息
-    return ExceptionMessage.builder().code(code).message(message).solution(solution).build();
+    return Warning.builder().code(code).message(message).solution(solution).build();
   }
 }

@@ -18,5 +18,5 @@ public class ApplicationExceptin extends RuntimeException {
   /**
    * 异常消息
    */
-  private final ExceptionMessage exceptionMessage;
+  private final Warning warning;
 }

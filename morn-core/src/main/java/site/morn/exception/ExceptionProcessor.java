@@ -13,5 +13,5 @@ public interface ExceptionProcessor {
    *
    * @return 异常消息
    */
-  <T extends Exception> ExceptionMessage process(T exception);
+  <T extends Exception> Warning process(T exception);
 }
