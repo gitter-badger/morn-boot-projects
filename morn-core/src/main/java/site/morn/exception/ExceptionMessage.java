@@ -3,6 +3,7 @@ package site.morn.exception;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 异常消息
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
+@ToString
 public class ExceptionMessage {
 
   /**
