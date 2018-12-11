@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * 异常消息
+ * 应用消息
  *
  * @author timely-rain
  * @since 1.0.0, 2018/10/16
@@ -15,20 +15,20 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ExceptionMessage {
+public class ApplicationMessage {
 
   /**
-   * 异常码
+   * 状态码
    */
   private String code;
 
   /**
-   * 异常消息
+   * 应用消息
    */
   private String message;
 
   /**
-   * 异常解决方案
+   * 解决方案
    */
   private String solution;
 
@@ -44,7 +44,7 @@ public class ExceptionMessage {
   /**
    * 抛出应用异常
    */
-  public void throwing() {
+  public void thrown() {
     throw exception();
   }
 }

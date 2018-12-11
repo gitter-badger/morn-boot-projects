@@ -11,7 +11,7 @@ import site.morn.translate.Translators;
  * @since 1.0.0, 2018/12/10
  */
 @RequiredArgsConstructor
-public class Warnings {
+public class ApplicationMessages {
 
   /**
    * 翻译载体
@@ -25,7 +25,7 @@ public class Warnings {
    * @param args 警告参数
    * @return 警告消息
    */
-  public static ExceptionMessage message(String code, Object... args) {
+  public static ApplicationMessage translate(String code, Object... args) {
     return builder().code(code).arguments(args).build();
   }
 
@@ -34,8 +34,8 @@ public class Warnings {
    *
    * @return 警告构建器
    */
-  private static Warnings builder() {
-    return new Warnings(Transfer.builder().build());
+  private static ApplicationMessages builder() {
+    return new ApplicationMessages(Transfer.builder().build());
   }
 
   /**
@@ -44,7 +44,7 @@ public class Warnings {
    * @param code 警告编码
    * @return 警告构建器
    */
-  public Warnings code(String code) {
+  public ApplicationMessages code(String code) {
     transfer.setCode(code);
     return this;
   }
@@ -55,7 +55,7 @@ public class Warnings {
    * @param args 警告参数
    * @return 警告构建器
    */
-  private Warnings arguments(Object... args) {
+  private ApplicationMessages arguments(Object... args) {
     transfer.setArgs(args);
     return this;
   }
@@ -65,7 +65,7 @@ public class Warnings {
    *
    * @return 警告消息
    */
-  private ExceptionMessage build() {
-    return Translators.defaultTranslator().translate(transfer, ExceptionMessage.class);
+  private ApplicationMessage build() {
+    return Translators.defaultTranslator().translate(transfer, ApplicationMessage.class);
   }
 }

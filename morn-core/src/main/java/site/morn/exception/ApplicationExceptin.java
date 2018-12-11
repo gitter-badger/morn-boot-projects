@@ -3,6 +3,7 @@ package site.morn.exception;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Delegate;
 
 /**
  * 应用异常
@@ -18,5 +19,6 @@ public class ApplicationExceptin extends RuntimeException {
   /**
    * 异常消息
    */
-  private final ExceptionMessage exceptionMessage;
+  @Delegate
+  private final transient ApplicationMessage applicationMessage;
 }
