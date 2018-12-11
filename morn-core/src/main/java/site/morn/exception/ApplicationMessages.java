@@ -25,7 +25,7 @@ public class ApplicationMessages {
    * @param args 警告参数
    * @return 警告消息
    */
-  public static ApplicationMessage message(String code, Object... args) {
+  public static ApplicationMessage translate(String code, Object... args) {
     return builder().code(code).arguments(args).build();
   }
 
