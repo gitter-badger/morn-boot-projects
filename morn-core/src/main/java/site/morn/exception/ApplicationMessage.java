@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Warning {
+public class ApplicationMessage {
 
   /**
    * 异常码

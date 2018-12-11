@@ -14,5 +14,5 @@ public interface ExceptionInterpreter {
    *
    * @param throwable 异常
    */
-  Warning resolve(Throwable throwable);
+  ApplicationMessage resolve(Throwable throwable);
 }
