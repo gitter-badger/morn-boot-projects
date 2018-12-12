@@ -177,8 +177,8 @@ public class Rests {
   }
 
   public RestMessage generate() {
-    RestMessage restMessage = translator.translate(transfer, RestMessage.class);
-    return entity.message(restMessage.message());
+    String message = translator.translate(transfer);
+    return entity.message(message);
   }
 
   /**
