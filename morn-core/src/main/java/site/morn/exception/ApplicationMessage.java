@@ -37,8 +37,8 @@ public class ApplicationMessage {
    *
    * @return 应用异常
    */
-  public ApplicationExceptin exception() {
-    return new ApplicationExceptin(this);
+  public ApplicationException exception() {
+    return new ApplicationException(this);
   }
 
   /**
