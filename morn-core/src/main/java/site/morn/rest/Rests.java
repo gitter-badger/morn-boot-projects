@@ -38,7 +38,7 @@ public class Rests {
   /**
    * 消息体
    */
-  private RestMessage entity;
+  private RestMessage restMessage;
 
   /**
    * 翻译载体
@@ -64,11 +64,11 @@ public class Rests {
   }
 
   private static Rests pureOk() {
-    return pure().success(true).level(Level.Info);
+    return pure().success(true).level(Level.INFO);
   }
 
   private static Rests pureError() {
-    return pure().success(false).level(Level.Error);
+    return pure().success(false).level(Level.ERROR);
   }
 
   public static Rests buildOk() {
@@ -142,7 +142,7 @@ public class Rests {
    * @return REST消息体
    */
   public Rests entity(RestMessage entity) {
-    this.entity = entity;
+    this.restMessage = entity;
     return this;
   }
 
@@ -152,33 +152,35 @@ public class Rests {
   }
 
   public Rests success(boolean value) {
-    entity.success(value);
+    restMessage.setSuccess(value);
     return this;
   }
 
   public Rests code(String value) {
-    entity.code(value);
+    restMessage.setCode(value);
     return this;
   }
 
   public Rests level(Level level) {
-    entity.level(level);
+    restMessage.setLevel(level);
     return this;
   }
 
   public Rests message(String value) {
-    entity.message(value);
+    restMessage.setMessage(value);
     return this;
   }
 
   public Rests data(Object value) {
-    entity.data(value);
+    restMessage.setData(value);
     return this;
   }
 
   public RestMessage generate() {
-    String message = translator.translate(transfer);
-    return entity.message(message);
+    if (Objects.nonNull(restMessage.getMessage())) {
+      restMessage.setMessage(translator.translate(transfer));
+    }
+    return restMessage;
   }
 
   /**

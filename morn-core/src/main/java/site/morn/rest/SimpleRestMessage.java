@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
  * @author timely-rain
  * @since 1.0.0, 2018/8/8
  */
-@Accessors(fluent = true, chain = true)
+@Accessors(chain = true)
 @Getter
 @Setter
 @ToString
@@ -51,19 +51,9 @@ public class SimpleRestMessage implements RestMessage {
    * @return REST消息
    */
   @Override
-  public <T extends RestMessage> T level(Level level) {
+  @SuppressWarnings("unchecked")
+  public <T extends RestMessage> T setLevel(Level level) {
     this.level = level.value;
     return (T) this;
-  }
-
-  /**
-   * 设置消息级别
-   *
-   * @param level 消息级别
-   * @return REST消息
-   */
-  public SimpleRestMessage level(String level) {
-    this.level = level;
-    return this;
   }
 }
