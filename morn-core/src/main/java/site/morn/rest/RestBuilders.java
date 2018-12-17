@@ -43,12 +43,36 @@ public class RestBuilders {
     return infoBuilder().code(code).transfer(code, args);
   }
 
+  public static Rests successBuilder(Object data) {
+    return successBuilder().data(data);
+  }
+
   public static Rests failureBuilder() {
     return failureBuilder(CODE_ERROR);
   }
 
   public static Rests failureBuilder(String code, Object... args) {
     return errorBuilder().code(code).transfer(code, args);
+  }
+
+  public static RestMessage successMessage() {
+    return RestBuilders.successBuilder().build();
+  }
+
+  public static RestMessage successMessage(String code, Object... args) {
+    return RestBuilders.successBuilder(code, args).build();
+  }
+
+  public static RestMessage successMessage(Object data) {
+    return RestBuilders.successBuilder(data).build();
+  }
+
+  public static RestMessage failureMessage() {
+    return RestBuilders.failureBuilder().build();
+  }
+
+  public static RestMessage failureMessage(String code, Object... args) {
+    return RestBuilders.failureBuilder(code, args).build();
   }
 
 }
