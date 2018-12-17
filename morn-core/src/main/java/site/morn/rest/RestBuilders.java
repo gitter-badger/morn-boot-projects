@@ -36,11 +36,11 @@ public class RestBuilders {
   }
 
   public static Rests successBuilder() {
-    return infoBuilder().code(CODE_OK).translate(CODE_OK);
+    return infoBuilder().code(CODE_OK).transfer(CODE_OK);
   }
 
   public static Rests successBuilder(String code, Object... args) {
-    return infoBuilder().code(code).translate(code, args);
+    return infoBuilder().code(code).transfer(code, args);
   }
 
   public static Rests failureBuilder() {
@@ -48,7 +48,7 @@ public class RestBuilders {
   }
 
   public static Rests failureBuilder(String code, Object... args) {
-    return errorBuilder().code(code).translate(code, args);
+    return errorBuilder().code(code).transfer(code, args);
   }
 
 }

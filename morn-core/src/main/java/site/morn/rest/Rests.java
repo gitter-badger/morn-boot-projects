@@ -137,24 +137,36 @@ public class Rests {
   }
 
   /**
+   * 翻译REST消息
+   *
+   * <p>如果显示的指定了消息内容{@link Rests#message(String)}，则不会进行翻译。
+   *
+   * @return REST构建器
+   */
+  public Rests translate() {
+    if (Objects.isNull(restMessage.getMessage())) {
+      restMessage.setMessage(translator.translate(transfer));
+    }
+    return this;
+  }
+
+  /**
    * 构建REST消息
    *
-   * <p>构建消息时，会进行翻译操作{@link Rests#translate(String, Object...)}。
+   * <p>构建消息时，会进行翻译操作{@link Translator#translate(Transfer)}。
    * 如果显示的指定了消息内容{@link Rests#message(String)}，则不会进行翻译。
    *
    * @return REST消息
    */
   public RestMessage build() {
-    if (Objects.isNull(restMessage.getMessage())) {
-      restMessage.setMessage(translator.translate(transfer));
-    }
+    translate();
     return restMessage;
   }
 
   /**
    * 设置REST消息体
    *
-   * @return REST消息体
+   * @return REST构建器
    */
   public Rests restMessage(RestMessage restMessage) {
     this.restMessage = restMessage;
@@ -168,7 +180,7 @@ public class Rests {
    * @param args 国际化参数
    * @return REST构建器
    */
-  public Rests translate(String code, Object... args) {
+  public Rests transfer(String code, Object... args) {
     this.transfer = Transfer.builder().code(code).args(args).build();
     return this;
   }
