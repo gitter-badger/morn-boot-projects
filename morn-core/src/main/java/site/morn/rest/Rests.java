@@ -16,6 +16,11 @@ import site.morn.translate.Translator;
 public class Rests {
 
   /**
+   * 消息编码前缀
+   */
+  public static final String CODE_PREFIX = "rest";
+
+  /**
    * 成功状态码
    */
   public static final String CODE_OK = "morn.ok";
@@ -84,23 +89,23 @@ public class Rests {
   }
 
   public static RestMessage ok() {
-    return buildOk().generate();
+    return buildOk().build();
   }
 
   public static RestMessage ok(String message) {
-    return buildOk().message(message).generate();
+    return buildOk().message(message).build();
   }
 
   public static RestMessage ok(Object data) {
-    return buildOk().data(data).generate();
+    return buildOk().data(data).build();
   }
 
   public static RestMessage error() {
-    return buildError().generate();
+    return buildError().build();
   }
 
   public static RestMessage error(String code, Object... args) {
-    return buildError(code, args).generate();
+    return buildError(code, args).build();
   }
 
   /**
@@ -176,7 +181,12 @@ public class Rests {
     return this;
   }
 
-  public RestMessage generate() {
+  /**
+   * 构建REST消息
+   *
+   * @return REST消息
+   */
+  public RestMessage build() {
     if (Objects.nonNull(restMessage.getMessage())) {
       restMessage.setMessage(translator.translate(transfer));
     }
@@ -195,6 +205,6 @@ public class Rests {
     if (Objects.isNull(restConverter)) {
       return null;
     }
-    return restConverter.convert(generate());
+    return restConverter.convert(build());
   }
 }
