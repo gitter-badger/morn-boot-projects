@@ -23,7 +23,7 @@ public class ApplicationMessage {
   private String code;
 
   /**
-   * 应用消息
+   * 消息内容
    */
   private String message;
 
