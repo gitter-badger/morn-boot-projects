@@ -65,7 +65,7 @@ public class Rests {
   }
 
   private static Rests pure() {
-    return new Rests().entity(new SimpleRestMessage());
+    return new Rests().restMessage(new SimpleRestMessage());
   }
 
   private static Rests pureOk() {
@@ -146,18 +146,18 @@ public class Rests {
    *
    * @return REST消息体
    */
-  public Rests entity(RestMessage entity) {
+  public Rests restMessage(RestMessage entity) {
     this.restMessage = entity;
-    return this;
-  }
-
-  public Rests translate(String code, Object... args) {
-    this.transfer = Transfer.builder().code(code).args(args).build();
     return this;
   }
 
   public Rests success(boolean value) {
     restMessage.setSuccess(value);
+    return this;
+  }
+
+  public Rests translate(String code, Object... args) {
+    this.transfer = Transfer.builder().code(code).args(args).build();
     return this;
   }
 
@@ -184,10 +184,13 @@ public class Rests {
   /**
    * 构建REST消息
    *
+   * <p>构建消息时，会进行翻译{@link Translator#translate(Transfer)}操作。
+   * 如果显示的指定了{@link Rests#message(String)}，则不会进行翻译。
+   *
    * @return REST消息
    */
   public RestMessage build() {
-    if (Objects.nonNull(restMessage.getMessage())) {
+    if (Objects.isNull(restMessage.getMessage())) {
       restMessage.setMessage(translator.translate(transfer));
     }
     return restMessage;
