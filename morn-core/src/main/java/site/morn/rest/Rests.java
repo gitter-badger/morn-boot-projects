@@ -6,6 +6,7 @@ import site.morn.rest.RestMessage.Level;
 import site.morn.rest.convert.RestConverter;
 import site.morn.translate.Transfer;
 import site.morn.translate.Translator;
+import site.morn.translate.Translators;
 
 /**
  * REST构建器
@@ -26,6 +27,11 @@ public class Rests {
   private static Translator translator;
 
   /**
+   * REST配置项
+   */
+  private static RestProperties restProperties;
+
+  /**
    * 消息体
    */
   private RestMessage restMessage;
@@ -43,10 +49,22 @@ public class Rests {
    *
    * @param beanCache 标识实例缓存
    * @param translator 翻译器
+   * @param restProperties REST配置项
    */
-  public static void initialize(IdentifiedBeanCache beanCache, Translator translator) {
+  public static void initialize(IdentifiedBeanCache beanCache, Translator translator,
+      RestProperties restProperties) {
     Rests.beanCache = beanCache;
     Rests.translator = translator;
+    Rests.restProperties = restProperties;
+  }
+
+  /**
+   * 获取REST配置项
+   *
+   * @return REST配置项
+   */
+  public static RestProperties properties() {
+    return restProperties;
   }
 
   /**
@@ -118,7 +136,10 @@ public class Rests {
    */
   public Rests translate() {
     if (Objects.isNull(restMessage.getMessage())) {
-      restMessage.setMessage(translator.translate(transfer));
+      String messageCode = Translators.formatCode(restProperties.getPrefix(), transfer.getCode(),
+          restProperties.getMessageSuffix());
+      String message = translator.translate(messageCode, transfer.getArgs());
+      restMessage.setMessage(message);
     }
     return this;
   }
