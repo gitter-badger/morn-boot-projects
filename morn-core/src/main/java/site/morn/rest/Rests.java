@@ -16,21 +16,6 @@ import site.morn.translate.Translator;
 public class Rests {
 
   /**
-   * 消息编码前缀
-   */
-  public static final String CODE_PREFIX = "rest";
-
-  /**
-   * 成功状态码
-   */
-  public static final String CODE_OK = "morn.ok";
-
-  /**
-   * 错误状态码
-   */
-  public static final String CODE_ERROR = "morn.error";
-
-  /**
    * 标识实例缓存
    */
   private static IdentifiedBeanCache beanCache;
@@ -64,28 +49,13 @@ public class Rests {
     Rests.translator = translator;
   }
 
+  /**
+   * 获取REST构建器
+   *
+   * @return REST构建器
+   */
   public static Rests builder() {
     return new Rests().restMessage(new SimpleRestMessage());
-  }
-
-  public static RestMessage ok() {
-    return RestBuilders.successBuilder().build();
-  }
-
-  public static RestMessage ok(String code, Object... args) {
-    return RestBuilders.successBuilder(code, args).build();
-  }
-
-  public static RestMessage ok(Object data) {
-    return RestBuilders.successBuilder().data(data).build();
-  }
-
-  public static RestMessage error() {
-    return RestBuilders.failureBuilder().build();
-  }
-
-  public static RestMessage error(String code, Object... args) {
-    return RestBuilders.failureBuilder(code, args).build();
   }
 
   /**
@@ -96,6 +66,7 @@ public class Rests {
    * @return REST消息
    * @see RestConverter REST消息转换器
    */
+  @SuppressWarnings("unchecked")
   public static <T> RestMessage from(T foreign) {
     RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign.getClass());
     if (Objects.isNull(restConverter)) {
@@ -113,6 +84,7 @@ public class Rests {
    * @return 外来消息
    * @see RestConverter REST消息转换器
    */
+  @SuppressWarnings("unchecked")
   public static <T> T to(RestMessage restMessage, Class<T> foreign) {
     RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign);
     if (Objects.isNull(restConverter)) {
@@ -128,6 +100,7 @@ public class Rests {
    * @param <T> 外来消息类型
    * @return 外来消息
    */
+  @SuppressWarnings("unchecked")
   public <T> T to(Class<T> foreign) {
     RestConverter<T> restConverter = beanCache.bean(RestConverter.class, foreign);
     if (Objects.isNull(restConverter)) {
