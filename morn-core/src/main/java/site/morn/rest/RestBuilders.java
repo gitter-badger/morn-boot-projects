@@ -10,16 +10,6 @@ import site.morn.rest.RestMessage.Level;
  */
 public class RestBuilders {
 
-  /**
-   * 成功状态码
-   */
-  private static final String CODE_SUCCESS = "rest.success";
-
-  /**
-   * 错误状态码
-   */
-  private static final String CODE_FAILURE = "rest.failure";
-
   private RestBuilders() {
   }
 
@@ -57,12 +47,23 @@ public class RestBuilders {
   /**
    * 获取成功消息构建器
    *
-   * <p>success:true, level:info, code:rest.ok
+   * <p>success:true, level:info, code:rest.success
    *
    * @return 成功消息构建器
    */
   public static Rests successBuilder() {
-    return infoBuilder().code(CODE_SUCCESS).transfer(CODE_SUCCESS);
+    String successCode = Rests.properties().getSuccessCode();
+    return successBuilder(successCode).transfer(successCode);
+  }
+
+  /**
+   * 获取成功消息构建器
+   *
+   * @param code 国际化编号
+   * @return 成功消息构建器
+   */
+  public static Rests successBuilder(String code) {
+    return infoBuilder().code(code).transfer(code);
   }
 
   /**
@@ -92,7 +93,8 @@ public class RestBuilders {
    * @return 失败消息构建器
    */
   public static Rests failureBuilder() {
-    return failureBuilder(CODE_FAILURE);
+    String failureCode = Rests.properties().getFailureCode();
+    return failureBuilder(failureCode);
   }
 
   /**
@@ -113,6 +115,16 @@ public class RestBuilders {
    */
   public static RestMessage successMessage() {
     return RestBuilders.successBuilder().build();
+  }
+
+  /**
+   * 构建成功消息
+   *
+   * @param code 国际化编号
+   * @return 成功消息
+   */
+  public static RestMessage successMessage(String code) {
+    return RestBuilders.successBuilder(code).build();
   }
 
   /**
