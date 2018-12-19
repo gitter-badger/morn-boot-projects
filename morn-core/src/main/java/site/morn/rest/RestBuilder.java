@@ -14,7 +14,7 @@ import site.morn.translate.Translators;
  * @author timely-rain
  * @since 1.0.0, 2018/7/25
  */
-public class Rests {
+public class RestBuilder {
 
   /**
    * 标识实例缓存
@@ -41,7 +41,7 @@ public class Rests {
    */
   private Transfer transfer;
 
-  private Rests() {
+  private RestBuilder() {
   }
 
   /**
@@ -53,9 +53,9 @@ public class Rests {
    */
   public static void initialize(IdentifiedBeanCache beanCache, Translator translator,
       RestProperties restProperties) {
-    Rests.beanCache = beanCache;
-    Rests.translator = translator;
-    Rests.restProperties = restProperties;
+    RestBuilder.beanCache = beanCache;
+    RestBuilder.translator = translator;
+    RestBuilder.restProperties = restProperties;
   }
 
   /**
@@ -72,8 +72,8 @@ public class Rests {
    *
    * @return REST构建器
    */
-  public static Rests builder() {
-    return new Rests().restMessage(new SimpleRestMessage());
+  public static RestBuilder builder() {
+    return new RestBuilder().restMessage(new SimpleRestMessage());
   }
 
   /**
@@ -130,11 +130,11 @@ public class Rests {
   /**
    * 翻译REST消息
    *
-   * <p>如果显示的指定了消息内容{@link Rests#message(String)}，则不会进行翻译。
+   * <p>如果显示的指定了消息内容{@link RestBuilder#message(String)}，则不会进行翻译。
    *
    * @return REST构建器
    */
-  public Rests translate() {
+  public RestBuilder translate() {
     if (Objects.isNull(restMessage.getMessage())) {
       String messageCode = Translators.formatCode(restProperties.getPrefix(), transfer.getCode(),
           restProperties.getMessageSuffix());
@@ -148,7 +148,7 @@ public class Rests {
    * 构建REST消息
    *
    * <p>构建消息时，会进行翻译操作{@link Translator#translate(Transfer)}。
-   * 如果显示的指定了消息内容{@link Rests#message(String)}，则不会进行翻译。
+   * 如果显示的指定了消息内容{@link RestBuilder#message(String)}，则不会进行翻译。
    *
    * @return REST消息
    */
@@ -162,7 +162,7 @@ public class Rests {
    *
    * @return REST构建器
    */
-  public Rests restMessage(RestMessage restMessage) {
+  public RestBuilder restMessage(RestMessage restMessage) {
     this.restMessage = restMessage;
     return this;
   }
@@ -174,7 +174,7 @@ public class Rests {
    * @param args 国际化参数
    * @return REST构建器
    */
-  public Rests transfer(String code, Object... args) {
+  public RestBuilder transfer(String code, Object... args) {
     this.transfer = Transfer.builder().code(code).args(args).build();
     return this;
   }
@@ -185,7 +185,7 @@ public class Rests {
    * @param value 成功标识
    * @return REST构建器
    */
-  public Rests success(boolean value) {
+  public RestBuilder success(boolean value) {
     restMessage.setSuccess(value);
     return this;
   }
@@ -196,7 +196,7 @@ public class Rests {
    * @param level 消息级别
    * @return REST构建器
    */
-  public Rests level(Level level) {
+  public RestBuilder level(Level level) {
     restMessage.setLevel(level);
     return this;
   }
@@ -207,7 +207,7 @@ public class Rests {
    * @param value 状态码
    * @return REST构建器
    */
-  public Rests code(String value) {
+  public RestBuilder code(String value) {
     restMessage.setCode(value);
     return this;
   }
@@ -218,7 +218,7 @@ public class Rests {
    * @param value 消息内容
    * @return REST构建器
    */
-  public Rests message(String value) {
+  public RestBuilder message(String value) {
     restMessage.setMessage(value);
     return this;
   }
@@ -229,7 +229,7 @@ public class Rests {
    * @param value 消息数据
    * @return REST构建器
    */
-  public Rests data(Object value) {
+  public RestBuilder data(Object value) {
     restMessage.setData(value);
     return this;
   }

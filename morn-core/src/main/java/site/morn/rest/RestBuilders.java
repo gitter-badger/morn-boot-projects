@@ -18,8 +18,8 @@ public class RestBuilders {
    *
    * @return 默认构建器
    */
-  private static Rests builder() {
-    return Rests.builder();
+  private static RestBuilder builder() {
+    return RestBuilder.builder();
   }
 
   /**
@@ -29,7 +29,7 @@ public class RestBuilders {
    *
    * @return 信息构建器
    */
-  public static Rests infoBuilder() {
+  public static RestBuilder infoBuilder() {
     return builder().success(true).level(Level.INFO);
   }
 
@@ -40,7 +40,7 @@ public class RestBuilders {
    *
    * @return 错误构建器
    */
-  public static Rests errorBuilder() {
+  public static RestBuilder errorBuilder() {
     return builder().success(false).level(Level.ERROR);
   }
 
@@ -51,8 +51,8 @@ public class RestBuilders {
    *
    * @return 成功消息构建器
    */
-  public static Rests successBuilder() {
-    String successCode = Rests.properties().getSuccessCode();
+  public static RestBuilder successBuilder() {
+    String successCode = RestBuilder.properties().getSuccessCode();
     return successBuilder(successCode).transfer(successCode);
   }
 
@@ -62,7 +62,7 @@ public class RestBuilders {
    * @param code 国际化编号
    * @return 成功消息构建器
    */
-  public static Rests successBuilder(String code) {
+  public static RestBuilder successBuilder(String code) {
     return infoBuilder().code(code).transfer(code);
   }
 
@@ -73,7 +73,7 @@ public class RestBuilders {
    * @param args 国际化参数
    * @return 成功消息构建器
    */
-  public static Rests successBuilder(String code, Object... args) {
+  public static RestBuilder successBuilder(String code, Object... args) {
     return infoBuilder().code(code).transfer(code, args);
   }
 
@@ -83,7 +83,7 @@ public class RestBuilders {
    * @param data 数据
    * @return 成功消息构建器
    */
-  public static Rests successBuilder(Object data) {
+  public static RestBuilder successBuilder(Object data) {
     return successBuilder().data(data);
   }
 
@@ -92,8 +92,8 @@ public class RestBuilders {
    *
    * @return 失败消息构建器
    */
-  public static Rests failureBuilder() {
-    String failureCode = Rests.properties().getFailureCode();
+  public static RestBuilder failureBuilder() {
+    String failureCode = RestBuilder.properties().getFailureCode();
     return failureBuilder(failureCode);
   }
 
@@ -104,7 +104,7 @@ public class RestBuilders {
    * @param args 国际化参数
    * @return 失败消息构建器
    */
-  public static Rests failureBuilder(String code, Object... args) {
+  public static RestBuilder failureBuilder(String code, Object... args) {
     return errorBuilder().code(code).transfer(code, args);
   }
 
