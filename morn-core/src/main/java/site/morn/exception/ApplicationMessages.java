@@ -1,5 +1,6 @@
 package site.morn.exception;
 
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import site.morn.translate.Transfer;
 import site.morn.translate.Translators;
@@ -17,6 +18,16 @@ public class ApplicationMessages {
    * 翻译载体
    */
   private final Transfer transfer;
+
+  /**
+   * 消息内容
+   */
+  private String message;
+
+  /**
+   * 解决方案
+   */
+  private String solution;
 
   /**
    * 构建应用消息
@@ -61,11 +72,40 @@ public class ApplicationMessages {
   }
 
   /**
+   * 设置消息内容
+   *
+   * @param message 消息内容
+   * @return 应用消息构建器
+   */
+  public ApplicationMessages messages(String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * 设置解决方案
+   *
+   * @param solution 解决方案
+   * @return 应用消息构建器
+   */
+  public ApplicationMessages solution(String solution) {
+    this.solution = solution;
+    return this;
+  }
+
+  /**
    * 构建应用消息
    *
    * @return 应用消息
    */
   private ApplicationMessage build() {
+    if ((Objects.nonNull(message) && !Objects.equals(message, "")) || (Objects.nonNull(solution)
+        && !Objects.equals(solution, ""))) {
+      // 当设置了message/solution时，直接构建应用消息
+      return ApplicationMessage.builder().code(transfer.getCode()).message(message)
+          .solution(solution).build();
+    }
+    // 当未设置message/solution时，通过Translator构建应用消息
     return Translators.defaultTranslator().translate(transfer, ApplicationMessage.class);
   }
 }
