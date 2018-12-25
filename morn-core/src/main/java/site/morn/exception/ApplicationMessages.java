@@ -40,6 +40,19 @@ public class ApplicationMessages {
     return builder().code(code).arguments(args).build();
   }
 
+
+  /**
+   * 构建应用消息
+   *
+   * @param code 消息编码
+   * @param message 消息内容
+   * @param solution 解决方案
+   * @return 应用消息
+   */
+  public static ApplicationMessage buildMessage(String code, String message, String solution) {
+    return builder().code(code).message(message).solution(solution).build();
+  }
+
   /**
    * 获取应用消息构建器
    *
@@ -77,7 +90,7 @@ public class ApplicationMessages {
    * @param message 消息内容
    * @return 应用消息构建器
    */
-  public ApplicationMessages messages(String message) {
+  public ApplicationMessages message(String message) {
     this.message = message;
     return this;
   }
