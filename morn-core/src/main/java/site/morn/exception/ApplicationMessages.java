@@ -30,13 +30,13 @@ public class ApplicationMessages {
   private String solution;
 
   /**
-   * 构建应用消息
+   * 翻译应用消息
    *
    * @param code 消息编码
    * @param args 消息参数
    * @return 应用消息
    */
-  public static ApplicationMessage translate(String code, Object... args) {
+  public static ApplicationMessage translateMessage(String code, Object... args) {
     return builder().code(code).arguments(args).build();
   }
 
