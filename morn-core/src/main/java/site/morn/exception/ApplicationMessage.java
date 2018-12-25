@@ -1,9 +1,9 @@
 package site.morn.exception;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 应用消息
@@ -11,7 +11,7 @@ import lombok.ToString;
  * @author timely-rain
  * @since 1.0.0, 2018/10/16
  */
-@Builder
+@Accessors(chain = true)
 @Getter
 @Setter
 @ToString

@@ -115,8 +115,8 @@ public class ApplicationMessages {
     if ((Objects.nonNull(message) && !Objects.equals(message, "")) || (Objects.nonNull(solution)
         && !Objects.equals(solution, ""))) {
       // 当设置了message/solution时，直接构建应用消息
-      return ApplicationMessage.builder().code(transfer.getCode()).message(message)
-          .solution(solution).build();
+      return new ApplicationMessage().setCode(transfer.getCode()).setMessage(message)
+          .setSolution(solution);
     }
     // 当未设置message/solution时，通过Translator构建应用消息
     return Translators.defaultTranslator().translate(transfer, ApplicationMessage.class);
