@@ -28,7 +28,6 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <morn.version>1.0.0-SNAPSHOT</morn.version>
     <lombok.version>1.16.22</lombok.version>
 
     <jacoco.version>0.8.2</jacoco.version>
