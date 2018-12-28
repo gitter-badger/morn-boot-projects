@@ -45,21 +45,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <profiles>
-    <profile>
-      <id>sonatype-nexus-snapshots</id>
-      <properties>
-        <morn.version>1.0.0-SNAPSHOT</morn.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>sonatype-oss-release</id>
-      <properties>
-        <morn.version>1.0.0-RELEASE</morn.version>
-      </properties>
-    </profile>
-  </profiles>
-
   <build>
     <pluginManagement>
       <plugins>
