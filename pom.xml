@@ -11,7 +11,7 @@
 
   <groupId>site.morn</groupId>
   <artifactId>morn-projects</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <description>Morn Projects - 基于Java的系列开发工具包</description>
