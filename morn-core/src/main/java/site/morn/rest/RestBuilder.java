@@ -37,9 +37,9 @@ public class RestBuilder {
   private RestMessage restMessage;
 
   /**
-   * 翻译载体
+   * 翻译载体构建器
    */
-  private Transfer transfer;
+  private Transfer.TransferBuilder transferBuilder;
 
   private RestBuilder() {
   }
@@ -136,6 +136,7 @@ public class RestBuilder {
    */
   public RestBuilder translate() {
     if (Objects.isNull(restMessage.getMessage())) {
+      Transfer transfer = transferBuilder().build();
       String messageCode = Translators.formatCode(restProperties.getPrefix(), transfer.getCode(),
           restProperties.getMessageSuffix());
       String message = translator.translate(messageCode, transfer.getArgs());
@@ -175,7 +176,7 @@ public class RestBuilder {
    * @return REST构建器
    */
   public RestBuilder transfer(String code, Object... args) {
-    this.transfer = Transfer.builder().code(code).args(args).build();
+    transferBuilder().code(code).args(args);
     return this;
   }
 
@@ -208,7 +209,7 @@ public class RestBuilder {
    * @return REST构建器
    */
   public RestBuilder code(String value) {
-    restMessage.setCode(value);
+    transferBuilder().code(value);
     return this;
   }
 
@@ -232,5 +233,17 @@ public class RestBuilder {
   public RestBuilder data(Object value) {
     restMessage.setData(value);
     return this;
+  }
+
+  /**
+   * 获取翻译载体构建器
+   *
+   * @return 翻译载体构建器
+   */
+  private Transfer.TransferBuilder transferBuilder() {
+    if (Objects.isNull(transferBuilder)) {
+      transferBuilder = Transfer.builder();
+    }
+    return transferBuilder;
   }
 }
