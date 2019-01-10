@@ -1,7 +1,10 @@
 package site.morn.rest;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import site.morn.bean.IdentifiedBeanCache;
+import site.morn.exception.ApplicationMessages;
 import site.morn.rest.RestMessage.Level;
 import site.morn.rest.convert.RestConverter;
 import site.morn.translate.Transfer;
@@ -232,6 +235,28 @@ public class RestBuilder {
    */
   public RestBuilder data(Object value) {
     restMessage.setData(value);
+    return this;
+  }
+
+  /**
+   * 设置消息数据
+   *
+   * @param key 参数名称
+   * @param value 参数值
+   * @return REST构建器
+   */
+  @SuppressWarnings("unchecked")
+  public RestBuilder data(String key, Object value) {
+    Object data = restMessage.getData();
+    if (Objects.isNull(data)) {
+      data = new HashMap<>();
+    }
+    if (!(data instanceof Map)) {
+      ApplicationMessages
+          .buildMessage("rest.data-not-map", "REST数据不是Map类型", "请使用RestBuilder#data(Object value)")
+          .thrown();
+    }
+    ((Map) data).put(key, value);
     return this;
   }
 
