@@ -11,83 +11,56 @@ public interface RestMessage {
   /**
    * 成功标识
    */
-  String SUCCESS = "success";
-
-  /**
-   * 错误码
-   */
-  String CODE = "code";
-
-  /**
-   * 消息级别
-   *
-   * @see Level 级别枚举
-   */
-  String LEVEL = "level";
-
-  /**
-   * 消息
-   */
-  String MESSAGE = "message";
-
-  /**
-   * 数据
-   */
-  String DATA = "data";
+  boolean isSuccess();
 
   /**
    * 成功标识
    */
-  <T extends RestMessage> T success(boolean value);
-
-  /**
-   * 成功标识
-   */
-  boolean success();
+  <T extends RestMessage> T setSuccess(boolean value);
 
   /**
    * 状态码
    */
-  <T extends RestMessage> T code(String value);
+  String getCode();
 
   /**
    * 状态码
    */
-  String code();
+  <T extends RestMessage> T setCode(String value);
 
   /**
    * 消息级别
    *
    * @see Level 级别枚举
    */
-  <T extends RestMessage> T level(Level level);
+  String getLevel();
 
   /**
    * 消息级别
    *
    * @see Level 级别枚举
    */
-  String level();
+  <T extends RestMessage> T setLevel(Level level);
 
   /**
    * 消息内容
    */
-  <T extends RestMessage> T message(String value);
+  String getMessage();
 
   /**
    * 消息内容
    */
-  String message();
+  <T extends RestMessage> T setMessage(String value);
 
   /**
    * 数据
    */
-  <T extends RestMessage> T data(Object value);
+  <T> T getData();
 
   /**
    * 数据
    */
-  <T> T data();
+  <T extends RestMessage> T setData(Object value);
 
   /**
    * 消息级别
@@ -100,19 +73,19 @@ public interface RestMessage {
     /**
      * 调试
      */
-    Debug("debug"),
+    DEBUG("debug"),
     /**
      * 信息
      */
-    Info("info"),
+    INFO("info"),
     /**
      * 警告
      */
-    Warning("warning"),
+    WARNING("warning"),
     /**
      * 错误
      */
-    Error("error");
+    ERROR("error");
 
     /**
      * 值

@@ -14,7 +14,7 @@ import lombok.experimental.Delegate;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class ApplicationExceptin extends RuntimeException {
+public class ApplicationException extends RuntimeException {
 
   /**
    * 异常消息
