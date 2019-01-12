@@ -8,6 +8,6 @@ import java.util.HashMap;
  * @author timely-rain
  * @since 1.0.0, 2018/8/6
  */
-public class CriteriaMap extends HashMap<String, Object> {
+public class CriteriaMap extends HashMap<String, Object> implements CriteriaAttributes {
 
 }
