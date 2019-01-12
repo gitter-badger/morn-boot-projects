@@ -1,9 +1,9 @@
 package site.morn.exception;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 应用消息
@@ -11,7 +11,7 @@ import lombok.ToString;
  * @author timely-rain
  * @since 1.0.0, 2018/10/16
  */
-@Builder
+@Accessors(chain = true)
 @Getter
 @Setter
 @ToString
@@ -23,7 +23,7 @@ public class ApplicationMessage {
   private String code;
 
   /**
-   * 应用消息
+   * 消息内容
    */
   private String message;
 
@@ -37,8 +37,8 @@ public class ApplicationMessage {
    *
    * @return 应用异常
    */
-  public ApplicationExceptin exception() {
-    return new ApplicationExceptin(this);
+  public ApplicationException exception() {
+    return new ApplicationException(this);
   }
 
   /**

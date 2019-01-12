@@ -1,6 +1,7 @@
 package site.morn.util;
 
 import java.util.Objects;
+import lombok.experimental.UtilityClass;
 
 /**
  * 数组工具类
@@ -8,6 +9,7 @@ import java.util.Objects;
  * @author timely-rain
  * @since 1.0.0, 2018/11/26
  */
+@UtilityClass
 public final class ArrayUtils {
 
   /**
@@ -57,5 +59,26 @@ public final class ArrayUtils {
       }
     }
     return false;
+  }
+
+  /**
+   * 获取第一个匹配项
+   *
+   * @param array 参数数组
+   * @param cls 参数类型
+   * @param <T> 参数泛型
+   * @return 指定参数
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> T first(Object[] array, Class<T> cls) {
+    for (Object argument : array) {
+      if (Objects.isNull(argument)) {
+        continue;
+      }
+      if (cls.isAssignableFrom(argument.getClass())) {
+        return (T) argument;
+      }
+    }
+    return null;
   }
 }
