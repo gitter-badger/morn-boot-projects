@@ -1,6 +1,7 @@
 package site.morn.core;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 标准字典类
@@ -10,4 +11,11 @@ import java.util.HashMap;
  */
 public class CriteriaMap extends HashMap<String, Object> implements CriteriaAttributes {
 
+  public CriteriaMap() {
+    super();
+  }
+
+  public CriteriaMap(Map<String, Object> map) {
+    super(map);
+  }
 }
