@@ -251,12 +251,13 @@ public class RestBuilder {
     if (Objects.isNull(data)) {
       data = new HashMap<>();
     }
-    if (!(data instanceof Map)) {
+    if (data instanceof Map) {
+      ((Map) data).put(key, value);
+    } else {
       ApplicationMessages
           .buildMessage("rest.data-not-map", "REST数据不是Map类型", "请使用RestBuilder#data(Object value)")
           .thrown();
     }
-    ((Map) data).put(key, value);
     return this;
   }
 
