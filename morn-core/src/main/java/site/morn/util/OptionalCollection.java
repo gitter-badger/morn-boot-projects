@@ -33,9 +33,14 @@ public class OptionalCollection<T> {
   private static final OptionalCollection<?> EMPTY = new OptionalCollection<>();
 
   /**
-   * If non-null, the value; if null, indicates no value is present
+   * If {@link #isPresent()}, the value; if !{@link #isPresent()}, indicates no value is present
    */
   private final Collection<T> value;
+
+  /**
+   * Represents a predicate (boolean-valued function) of value.
+   */
+  private final Predicate<Collection<?>> predicate;
 
   /**
    * Constructs an empty instance.
@@ -45,6 +50,7 @@ public class OptionalCollection<T> {
    */
   private OptionalCollection() {
     this.value = null;
+    this.predicate = new EmptyPredicate();
   }
 
   /**
@@ -53,8 +59,9 @@ public class OptionalCollection<T> {
    * @param value the non-null value to be present
    * @throws NullPointerException if value is null
    */
-  private OptionalCollection(Collection<T> value) {
+  private OptionalCollection(Collection<T> value, Predicate<Collection<?>> predicate) {
     this.value = Objects.requireNonNull(value);
+    this.predicate = predicate;
   }
 
   /**
@@ -74,18 +81,6 @@ public class OptionalCollection<T> {
   }
 
   /**
-   * Returns an {@code OptionalCollection} with the specified present non-null value.
-   *
-   * @param <T> the class of the value
-   * @param value the value to be present, which must be non-null
-   * @return an {@code OptionalCollection} with the value present
-   * @throws NullPointerException if value is null
-   */
-  public static <T> OptionalCollection<T> of(Collection<T> value) {
-    return new OptionalCollection<>(value);
-  }
-
-  /**
    * Returns an {@code OptionalCollection} describing the specified value, if non-null, otherwise
    * returns an empty {@code OptionalCollection}.
    *
@@ -95,7 +90,20 @@ public class OptionalCollection<T> {
    * otherwise an empty {@code OptionalCollection}
    */
   public static <T> OptionalCollection<T> ofNullable(Collection<T> value) {
-    return value == null ? empty() : of(value);
+    return value == null ? empty() : new OptionalCollection<>(value, new NullablePredicate());
+  }
+
+  /**
+   * Returns an {@code OptionalCollection} describing the specified value, if non-empty, otherwise
+   * returns an empty {@code OptionalCollection}.
+   *
+   * @param <T> the class of the value
+   * @param value the possibly-null value to describe
+   * @return an {@code OptionalCollection} with a present value if the specified value is non-null,
+   * otherwise an empty {@code OptionalCollection}
+   */
+  public static <T> OptionalCollection<T> ofCollection(Collection<T> value) {
+    return value == null ? empty() : new OptionalCollection<>(value, new EmptyPredicate());
   }
 
   /**
@@ -119,7 +127,7 @@ public class OptionalCollection<T> {
    * @return {@code true} if there is a value present, otherwise {@code false}
    */
   public boolean isPresent() {
-    return value != null;
+    return predicate.test(value);
   }
 
   /**
@@ -129,7 +137,7 @@ public class OptionalCollection<T> {
    * @throws NullPointerException if value is present and {@code consumer} is null
    */
   public void ifPresent(Consumer<? super Collection<T>> consumer) {
-    if (value != null) {
+    if (isPresent()) {
       consumer.accept(value);
     }
   }
@@ -221,7 +229,7 @@ public class OptionalCollection<T> {
    * @return the value, if present, otherwise {@code other}
    */
   public Collection<T> orElse(Collection<T> other) {
-    return value != null ? value : other;
+    return isPresent() ? value : other;
   }
 
   /**
@@ -233,7 +241,7 @@ public class OptionalCollection<T> {
    * @throws NullPointerException if value is not present and {@code other} is null
    */
   public Collection<T> orElseGet(Supplier<? extends Collection<T>> other) {
-    return value != null ? value : other.get();
+    return isPresent() ? value : other.get();
   }
 
   /**
@@ -250,10 +258,32 @@ public class OptionalCollection<T> {
    */
   public <X extends Throwable> Collection<T> orElseThrow(Supplier<? extends X> exceptionSupplier)
       throws X {
-    if (value != null) {
+    if (isPresent()) {
       return value;
     } else {
       throw exceptionSupplier.get();
+    }
+  }
+
+  /**
+   * 空值断言
+   */
+  private static class NullablePredicate implements Predicate<Collection<?>> {
+
+    @Override
+    public boolean test(Collection<?> ts) {
+      return ts != null;
+    }
+  }
+
+  /**
+   * 可空断言
+   */
+  private static class EmptyPredicate implements Predicate<Collection<?>> {
+
+    @Override
+    public boolean test(Collection<?> ts) {
+      return ts != null && !ts.isEmpty();
     }
   }
 }
