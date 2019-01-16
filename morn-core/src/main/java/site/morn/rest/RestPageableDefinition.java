@@ -10,17 +10,7 @@ import site.morn.core.CriteriaAttributes;
  * @see CriteriaAttributes 标准属性类
  * @since 1.0.0, 2018/7/10
  */
-public interface RestPageableAttributes {
-
-  /**
-   * 默认页数
-   */
-  int DEFAULT_PAGE = 0;
-
-  /**
-   * 默认单页数量
-   */
-  int DEFAULT_SIZE = 20;
+public interface RestPageableDefinition {
 
   /**
    * 获取当前页
@@ -36,7 +26,7 @@ public interface RestPageableAttributes {
    * @param <T> REST分页类型
    * @return REST分页参数
    */
-  <T extends RestPageableAttributes> T setPage(int page);
+  <T extends RestPageableDefinition> T setPage(int page);
 
   /**
    * 获取单页数量
@@ -52,15 +42,15 @@ public interface RestPageableAttributes {
    * @param <T> REST分页类型
    * @return REST分页参数
    */
-  <T extends RestPageableAttributes> T setSize(int size);
+  <T extends RestPageableDefinition> T setSize(int size);
 
   /**
    * 上一页
    */
-  <T extends RestPageableAttributes> T prevPage();
+  <T extends RestPageableDefinition> T prevPage();
 
   /**
    * 下一页
    */
-  <T extends RestPageableAttributes> T nextPage();
+  <T extends RestPageableDefinition> T nextPage();
 }
