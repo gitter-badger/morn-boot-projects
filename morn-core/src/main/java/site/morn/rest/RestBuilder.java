@@ -250,6 +250,7 @@ public class RestBuilder {
     Object data = restMessage.getData();
     if (Objects.isNull(data)) {
       data = new HashMap<>();
+      restMessage.setData(data);
     }
     if (data instanceof Map) {
       ((Map) data).put(key, value);
