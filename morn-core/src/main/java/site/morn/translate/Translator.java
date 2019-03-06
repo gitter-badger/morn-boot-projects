@@ -22,6 +22,16 @@ public interface Translator {
   /**
    * 翻译
    *
+   * @param code 国际化编码
+   * @param args 国际化参数
+   * @param defaultMessage 默认消息
+   * @return 国际化消息
+   */
+  String translate(String code, Object[] args, String defaultMessage);
+
+  /**
+   * 翻译
+   *
    * @param locale 语言
    * @param code 国际化编码
    * @param args 国际化参数

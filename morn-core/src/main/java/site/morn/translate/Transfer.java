@@ -24,4 +24,9 @@ public class Transfer {
    * 国际化参数
    */
   private Object[] args;
+
+  /**
+   * 默认消息
+   */
+  private String defaultMessage;
 }
