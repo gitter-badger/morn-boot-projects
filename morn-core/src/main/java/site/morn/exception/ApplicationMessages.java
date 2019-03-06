@@ -30,16 +30,27 @@ public class ApplicationMessages {
   private String solution;
 
   /**
-   * 翻译应用消息
+   * 构建应用消息
    *
    * @param code 消息编码
-   * @param args 消息参数
+   * @param message 消息内容
    * @return 应用消息
    */
-  public static ApplicationMessage translateMessage(String code, Object... args) {
-    return builder().code(code).arguments(args).build();
+  public static ApplicationMessage build(String code, String message) {
+    return buildMessage(code, message, "");
   }
 
+  /**
+   * 构建应用消息
+   *
+   * @param code 消息编码
+   * @param message 消息内容
+   * @param solution 解决方案
+   * @return 应用消息
+   */
+  public static ApplicationMessage build(String code, String message, String solution) {
+    return buildMessage(code, message, solution);
+  }
 
   /**
    * 构建应用消息
@@ -51,6 +62,28 @@ public class ApplicationMessages {
    */
   public static ApplicationMessage buildMessage(String code, String message, String solution) {
     return builder().code(code).message(message).solution(solution).build();
+  }
+
+  /**
+   * 翻译应用消息
+   *
+   * @param code 消息编码
+   * @param args 消息参数
+   * @return 应用消息
+   */
+  public static ApplicationMessage translate(String code, Object... args) {
+    return translateMessage(code, args);
+  }
+
+  /**
+   * 翻译应用消息
+   *
+   * @param code 消息编码
+   * @param args 消息参数
+   * @return 应用消息
+   */
+  public static ApplicationMessage translateMessage(String code, Object... args) {
+    return builder().code(code).arguments(args).build();
   }
 
   /**
