@@ -61,7 +61,7 @@ public class ApplicationMessages {
    * @return 应用消息
    */
   public static ApplicationMessage buildMessage(String code, String message, String solution) {
-    return builder().code(code).message(message).solution(solution).build();
+    return withMessage(code, message).solution(solution).build();
   }
 
   /**
@@ -76,6 +76,20 @@ public class ApplicationMessages {
   }
 
   /**
+   * 翻译应用消息，支持缺省值
+   *
+   * @param code 消息编码
+   * @param defaultExpress 默认消息表达式
+   * @param args 消息参数
+   * @return 应用消息
+   */
+  public static ApplicationMessage translateOrDefault(String code, String defaultExpress,
+      Object... args) {
+    String defaultMessage = String.format(defaultExpress, args);
+    return withTransfer(code, args).defaultMessage(defaultMessage).build();
+  }
+
+  /**
    * 翻译应用消息
    *
    * @param code 消息编码
@@ -83,7 +97,29 @@ public class ApplicationMessages {
    * @return 应用消息
    */
   public static ApplicationMessage translateMessage(String code, Object... args) {
-    return builder().code(code).arguments(args).build();
+    return withTransfer(code, args).build();
+  }
+
+  /**
+   * 生成构建器，用于翻译应用消息
+   *
+   * @param code 消息编码
+   * @param args 消息参数
+   * @return 应用消息构建器
+   */
+  public static ApplicationMessages withTransfer(String code, Object... args) {
+    return builder().code(code).arguments(args);
+  }
+
+  /**
+   * 生成构建器，用于直接生成应用消息
+   *
+   * @param code 消息编码
+   * @param message 消息内容
+   * @return 应用消息构建器
+   */
+  public static ApplicationMessages withMessage(String code, String message) {
+    return builder().code(code).message(message);
   }
 
   /**
@@ -129,6 +165,17 @@ public class ApplicationMessages {
   }
 
   /**
+   * 设置缺省消息内容
+   *
+   * @param defaultMessage 缺省消息内容
+   * @return 应用消息构建器
+   */
+  public ApplicationMessages defaultMessage(String defaultMessage) {
+    transfer.setDefaultMessage(defaultMessage);
+    return this;
+  }
+
+  /**
    * 设置解决方案
    *
    * @param solution 解决方案
@@ -137,6 +184,15 @@ public class ApplicationMessages {
   public ApplicationMessages solution(String solution) {
     this.solution = solution;
     return this;
+  }
+
+  /**
+   * 从外部构建应用消息
+   *
+   * @return 应用消息
+   */
+  public ApplicationMessage generate() {
+    return build();
   }
 
   /**
