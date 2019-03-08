@@ -83,6 +83,19 @@ public class ApplicationMessages {
    * @param args 消息参数
    * @return 应用消息
    */
+  public static ApplicationMessage orDefault(String code, String defaultExpress,
+      Object... args) {
+    return translateOrDefault(code, defaultExpress, args);
+  }
+
+  /**
+   * 翻译应用消息，支持缺省值
+   *
+   * @param code 消息编码
+   * @param defaultExpress 默认消息表达式
+   * @param args 消息参数
+   * @return 应用消息
+   */
   public static ApplicationMessage translateOrDefault(String code, String defaultExpress,
       Object... args) {
     String defaultMessage = String.format(defaultExpress, args);
