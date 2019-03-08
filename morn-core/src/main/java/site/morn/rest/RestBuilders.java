@@ -114,7 +114,7 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage successMessage() {
-    return RestBuilders.successBuilder().build();
+    return successBuilder().build();
   }
 
   /**
@@ -124,7 +124,7 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage successMessage(String code) {
-    return RestBuilders.successBuilder(code).build();
+    return successBuilder(code).build();
   }
 
   /**
@@ -135,9 +135,8 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage successMessage(String code, Object... args) {
-    return RestBuilders.successBuilder(code, args).build();
+    return successBuilder(code, args).build();
   }
-
 
   /**
    * 构建成功消息
@@ -145,9 +144,8 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage successMessage(Object data) {
-    return RestBuilders.successBuilder(data).build();
+    return successBuilder(data).build();
   }
-
 
   /**
    * 构建失败消息
@@ -155,7 +153,7 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage failureMessage() {
-    return RestBuilders.failureBuilder().build();
+    return failureBuilder().build();
   }
 
   /**
@@ -166,7 +164,7 @@ public class RestBuilders {
    * @return 成功消息
    */
   public static RestMessage failureMessage(String code, Object... args) {
-    return RestBuilders.failureBuilder(code, args).build();
+    return failureBuilder(code, args).build();
   }
 
 }

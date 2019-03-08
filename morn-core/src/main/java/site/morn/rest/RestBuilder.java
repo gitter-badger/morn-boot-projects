@@ -115,6 +115,29 @@ public class RestBuilder {
   }
 
   /**
+   * 基于RestProperties配置翻译消息
+   *
+   * @param transfer 翻译载体
+   * @return 消息内容
+   */
+  public static String translateMessage(Transfer transfer) {
+    return translateMessage(transfer.getCode(), transfer.getArgs());
+  }
+
+  /**
+   * 基于RestProperties配置翻译消息
+   *
+   * @param code 消息编码
+   * @param args 消息参数
+   * @return 消息内容
+   */
+  public static String translateMessage(String code, Object... args) {
+    String messageCode = Translators.formatCode(restProperties.getPrefix(), code,
+        restProperties.getMessageSuffix());
+    return translator.translate(messageCode, args);
+  }
+
+  /**
    * 根据当前REST消息，生成外来消息
    *
    * @param foreign 外来消息类
@@ -140,9 +163,7 @@ public class RestBuilder {
   public RestBuilder translate() {
     if (Objects.isNull(restMessage.getMessage())) {
       Transfer transfer = transferBuilder().build();
-      String messageCode = Translators.formatCode(restProperties.getPrefix(), transfer.getCode(),
-          restProperties.getMessageSuffix());
-      String message = translator.translate(messageCode, transfer.getArgs());
+      String message = translateMessage(transfer);
       restMessage.setMessage(message);
     }
     return this;
