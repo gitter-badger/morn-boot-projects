@@ -3,6 +3,7 @@ package site.morn.log;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import site.morn.core.CriteriaMap;
 
 /**
  * 操作元数据
@@ -36,7 +37,22 @@ public class OperateMeta implements AnnotationOperate {
   private Object[] arguments;
 
   /**
+   * 方法参数
+   */
+  private Object[] methodArgs;
+
+  /**
+   * 方法返回值
+   */
+  private Object methodReturned;
+
+  /**
    * 例外异常类型
    */
   private Class<? extends Throwable>[] excepts;
+
+  /**
+   * 附加数据
+   */
+  private CriteriaMap attach;
 }

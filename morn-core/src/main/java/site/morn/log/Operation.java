@@ -19,6 +19,11 @@ import lombok.ToString;
 public class Operation {
 
   /**
+   * 操作元数据
+   */
+  private OperateMeta meta;
+
+  /**
    * 操作成功标识
    */
   private boolean success;
