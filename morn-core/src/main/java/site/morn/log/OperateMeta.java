@@ -3,6 +3,7 @@ package site.morn.log;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import site.morn.core.CriteriaMap;
 
 /**
@@ -14,7 +15,13 @@ import site.morn.core.CriteriaMap;
 @Builder
 @Getter
 @Setter
+@ToString
 public class OperateMeta implements AnnotationOperate {
+
+  /**
+   * 日志来源，通常是切点
+   */
+  private Object source;
 
   /**
    * 操作成功标识
