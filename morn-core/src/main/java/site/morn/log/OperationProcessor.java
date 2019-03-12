@@ -1,7 +1,5 @@
 package site.morn.log;
 
-import java.util.function.Consumer;
-
 /**
  * 操作日志处理器
  *
@@ -9,6 +7,13 @@ import java.util.function.Consumer;
  * @since 1.0.0, 2018/12/4
  */
 @FunctionalInterface
-public interface OperationProcessor extends Consumer<Operation> {
+public interface OperationProcessor {
 
+  /**
+   * 处理操作日志
+   *
+   * @param meta 操作日志元数据
+   * @param operation 操作日志实例
+   */
+  void handle(OperateMeta meta, Operation operation);
 }
