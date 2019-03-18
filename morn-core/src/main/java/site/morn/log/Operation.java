@@ -27,6 +27,11 @@ public class Operation {
   private String ip;
 
   /**
+   * 访问url
+   */
+  private String url;
+
+  /**
    * 操作系统
    */
   private String system;
