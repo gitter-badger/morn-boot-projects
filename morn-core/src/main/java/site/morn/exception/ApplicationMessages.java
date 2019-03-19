@@ -2,6 +2,7 @@ package site.morn.exception;
 
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
+import org.springframework.util.StringUtils;
 import site.morn.translate.Transfer;
 import site.morn.translate.Translators;
 
@@ -132,6 +133,7 @@ public class ApplicationMessages {
    * @return 应用消息构建器
    */
   public static ApplicationMessages withMessage(String code, String message) {
+    message = StringUtils.isEmpty(message) ? code : message;
     return builder().code(code).message(message);
   }
 
