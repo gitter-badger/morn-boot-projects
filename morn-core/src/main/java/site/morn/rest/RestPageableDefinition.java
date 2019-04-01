@@ -45,6 +45,22 @@ public interface RestPageableDefinition {
   <T extends RestPageableDefinition> T setSize(int size);
 
   /**
+   * 获取排序
+   *
+   * @return 排序
+   */
+  String getSort();
+
+  /**
+   * 设置排序
+   *
+   * @param sort 排序
+   * @param <T> REST分页类型
+   * @return REST分页参数
+   */
+  <T extends RestPageableDefinition> T setSort(String sort);
+
+  /**
    * 上一页
    */
   <T extends RestPageableDefinition> T prevPage();

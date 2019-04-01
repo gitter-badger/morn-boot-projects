@@ -1,5 +1,6 @@
 package site.morn.rest;
 
+import javax.validation.Valid;
 import site.morn.core.CriteriaMap;
 import site.morn.util.TypeUtils;
 
@@ -15,6 +16,7 @@ public class RestModel<M> implements RestModelDefinition<M, CriteriaMap> {
   /**
    * 数据模型
    */
+  @Valid
   private M model;
 
   /**

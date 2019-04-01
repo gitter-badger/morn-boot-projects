@@ -1,5 +1,7 @@
 package site.morn.rest;
 
+import site.morn.util.TypeUtils;
+
 /**
  * REST分页参数
  *
@@ -17,6 +19,11 @@ public class RestPageable implements RestPageableDefinition {
    * 单页数量
    */
   private int size;
+
+  /**
+   * 排序
+   */
+  private String sort;
 
   public RestPageable() {
     this.page = RestPageableConstant.DEFAULT_PAGE;
@@ -43,6 +50,17 @@ public class RestPageable implements RestPageableDefinition {
   public <T extends RestPageableDefinition> T setSize(int size) {
     this.size = size;
     return to();
+  }
+
+  @Override
+  public String getSort() {
+    return sort;
+  }
+
+  @Override
+  public <T extends RestPageableDefinition> T setSort(String sort) {
+    this.sort = sort;
+    return TypeUtils.as(this);
   }
 
   @Override
