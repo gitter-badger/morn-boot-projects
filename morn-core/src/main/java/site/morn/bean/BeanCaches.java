@@ -1,5 +1,7 @@
 package site.morn.bean;
 
+import java.util.List;
+
 /**
  * 实例缓存工具类
  *
@@ -33,4 +35,60 @@ public class BeanCaches {
   public static IdentifiedBeanCache defaultBeanCache() {
     return defaultBeanCache;
   }
+
+  /**
+   * 按标识检索实例
+   *
+   * @param identify 标识
+   * @param <T> 实例类型
+   * @return 实例集合
+   */
+  public static <T> List<T> beans(Class<T> type, AnnotationIdentify identify) {
+    return defaultBeanCache.beans(type, identify);
+  }
+
+  /**
+   * 按名称检索实例
+   *
+   * @param name 名称
+   * @param <T> 实例类型
+   * @return 实例
+   */
+  public static <T> T bean(Class<T> type, String name) {
+    return defaultBeanCache.bean(type, name);
+  }
+
+  /**
+   * 按目标检索实例
+   *
+   * @param target 目标
+   * @param <T> 实例类型
+   * @return 实例对象
+   */
+  public static <T> T bean(Class<T> type, Class<?> target) {
+    return defaultBeanCache.bean(type, target);
+  }
+
+  /**
+   * 按标签检索实例
+   *
+   * @param tags 标签
+   * @param <T> 实例类型
+   * @return 实例集合
+   */
+  public static <T> List<T> beans(Class<T> type, String... tags) {
+    return defaultBeanCache.beans(type, tags);
+  }
+
+  /**
+   * 按目标检索实例
+   *
+   * @param target 目标
+   * @param <T> 实例类型
+   * @return 实例集合
+   */
+  public static <T> List<T> beans(Class<T> type, Class<?> target) {
+    return defaultBeanCache.beans(type, target);
+  }
+
 }
