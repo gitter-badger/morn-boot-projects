@@ -161,8 +161,9 @@ public class RestBuilder {
    * @return REST构建器
    */
   public RestBuilder translate() {
+    Transfer transfer = transferBuilder().build();
+    restMessage.setCode(transfer.getCode());
     if (Objects.isNull(restMessage.getMessage())) {
-      Transfer transfer = transferBuilder().build();
       String message = translateMessage(transfer);
       restMessage.setMessage(message);
     }
