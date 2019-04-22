@@ -8,6 +8,7 @@ import site.morn.exception.ApplicationMessages;
 import site.morn.rest.RestMessage.Level;
 import site.morn.rest.convert.RestConverter;
 import site.morn.translate.Transfer;
+import site.morn.translate.Transfer.TransferBuilder;
 import site.morn.translate.Translator;
 import site.morn.translate.Translators;
 
@@ -42,7 +43,7 @@ public class RestBuilder {
   /**
    * 翻译载体构建器
    */
-  private Transfer.TransferBuilder transferBuilder;
+  private TransferBuilder transferBuilder;
 
   private RestBuilder() {
   }
@@ -289,7 +290,7 @@ public class RestBuilder {
    *
    * @return 翻译载体构建器
    */
-  private Transfer.TransferBuilder transferBuilder() {
+  private TransferBuilder transferBuilder() {
     if (Objects.isNull(transferBuilder)) {
       transferBuilder = Transfer.builder();
     }

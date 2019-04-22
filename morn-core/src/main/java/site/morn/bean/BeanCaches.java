@@ -39,6 +39,7 @@ public class BeanCaches {
   /**
    * 按标识检索实例
    *
+   * @param type 实例类
    * @param identify 标识
    * @param <T> 实例类型
    * @return 实例集合
@@ -50,6 +51,7 @@ public class BeanCaches {
   /**
    * 按名称检索实例
    *
+   * @param type 实例类
    * @param name 名称
    * @param <T> 实例类型
    * @return 实例
@@ -61,6 +63,7 @@ public class BeanCaches {
   /**
    * 按目标检索实例
    *
+   * @param type 实例类
    * @param target 目标
    * @param <T> 实例类型
    * @return 实例对象
@@ -72,6 +75,7 @@ public class BeanCaches {
   /**
    * 按标签检索实例
    *
+   * @param type 实例类
    * @param tags 标签
    * @param <T> 实例类型
    * @return 实例集合
@@ -83,6 +87,7 @@ public class BeanCaches {
   /**
    * 按目标检索实例
    *
+   * @param type 实例类
    * @param target 目标
    * @param <T> 实例类型
    * @return 实例集合
